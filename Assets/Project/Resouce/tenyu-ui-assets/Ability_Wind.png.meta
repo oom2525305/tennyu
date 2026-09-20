@@ -1,0 +1,1742 @@
+fileFormatVersion: 2
+guid: d72e7fc3f46efcc4c8ecf5743b5a8a70
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2832426090604035705
+    second: Ability_Wind_0
+  - first:
+      213: -8604416429037439300
+    second: Ability_Wind_1
+  - first:
+      213: -1139454340363616073
+    second: Ability_Wind_2
+  - first:
+      213: -5338054306162605599
+    second: Ability_Wind_3
+  - first:
+      213: 1530854961297692950
+    second: Ability_Wind_4
+  - first:
+      213: -3289565575557198437
+    second: Ability_Wind_5
+  - first:
+      213: -2834157322607530651
+    second: Ability_Wind_6
+  - first:
+      213: -282346073344966530
+    second: Ability_Wind_7
+  - first:
+      213: 6153014296931062809
+    second: Ability_Wind_8
+  - first:
+      213: 5321651584947827131
+    second: Ability_Wind_9
+  - first:
+      213: 1238747289837510963
+    second: Ability_Wind_10
+  - first:
+      213: 7365892700941776787
+    second: Ability_Wind_11
+  - first:
+      213: 709536759734866177
+    second: Ability_Wind_12
+  - first:
+      213: 2658370614284242472
+    second: Ability_Wind_13
+  - first:
+      213: -1620425487960659836
+    second: Ability_Wind_14
+  - first:
+      213: 3365159240854928064
+    second: Ability_Wind_15
+  - first:
+      213: -2656205897061498345
+    second: Ability_Wind_16
+  - first:
+      213: 476901673479350310
+    second: Ability_Wind_17
+  - first:
+      213: 7610164102654721133
+    second: Ability_Wind_18
+  - first:
+      213: 6926516789318146069
+    second: Ability_Wind_19
+  - first:
+      213: 399263434620679705
+    second: Ability_Wind_20
+  - first:
+      213: -1038340501510343346
+    second: Ability_Wind_21
+  - first:
+      213: 1059002562014777749
+    second: Ability_Wind_22
+  - first:
+      213: -4564777231299774588
+    second: Ability_Wind_23
+  - first:
+      213: 5838591562079818070
+    second: Ability_Wind_24
+  - first:
+      213: -8725174607554822842
+    second: Ability_Wind_25
+  - first:
+      213: -8785353337165615115
+    second: Ability_Wind_26
+  - first:
+      213: -4004120336349918944
+    second: Ability_Wind_27
+  - first:
+      213: -3190374354748965617
+    second: Ability_Wind_28
+  - first:
+      213: -3972463874762860584
+    second: Ability_Wind_29
+  - first:
+      213: 8093762598479965169
+    second: Ability_Wind_30
+  - first:
+      213: 558807156687995122
+    second: Ability_Wind_31
+  - first:
+      213: -8423727789498172933
+    second: Ability_Wind_32
+  - first:
+      213: 9219049289867187250
+    second: Ability_Wind_33
+  - first:
+      213: 3198354271952018387
+    second: Ability_Wind_34
+  - first:
+      213: 4917386888567007033
+    second: Ability_Wind_35
+  - first:
+      213: -784000158472527601
+    second: Ability_Wind_36
+  - first:
+      213: 8295539742415718302
+    second: Ability_Wind_37
+  - first:
+      213: 8100190435732824107
+    second: Ability_Wind_38
+  - first:
+      213: -5949325002740498551
+    second: Ability_Wind_39
+  - first:
+      213: 3490325696702286742
+    second: Ability_Wind_40
+  - first:
+      213: 852903057935875189
+    second: Ability_Wind_41
+  - first:
+      213: 8487956120189165958
+    second: Ability_Wind_42
+  - first:
+      213: -6604099625332230614
+    second: Ability_Wind_43
+  - first:
+      213: -7633346098887821022
+    second: Ability_Wind_44
+  - first:
+      213: 6436544750441484266
+    second: Ability_Wind_45
+  - first:
+      213: 2164867777584582010
+    second: Ability_Wind_46
+  - first:
+      213: -5155526505851523070
+    second: Ability_Wind_47
+  - first:
+      213: -1870509765314458279
+    second: Ability_Wind_48
+  - first:
+      213: 863578674822426361
+    second: Ability_Wind_49
+  - first:
+      213: -2881069810261746101
+    second: Ability_Wind_50
+  - first:
+      213: 2031167412340826950
+    second: Ability_Wind_51
+  - first:
+      213: 1224412473809394177
+    second: Ability_Wind_52
+  - first:
+      213: 7909283450323053438
+    second: Ability_Wind_53
+  - first:
+      213: 6498477676023613282
+    second: Ability_Wind_54
+  - first:
+      213: 617089750842549198
+    second: Ability_Wind_55
+  - first:
+      213: 2105780325425987174
+    second: Ability_Wind_56
+  - first:
+      213: -3303575874858149382
+    second: Ability_Wind_57
+  - first:
+      213: 7762996100805332434
+    second: Ability_Wind_58
+  - first:
+      213: 7838768936665981249
+    second: Ability_Wind_59
+  - first:
+      213: 5306631736371691798
+    second: Ability_Wind_60
+  - first:
+      213: 6042051179688252037
+    second: Ability_Wind_61
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ability_Wind_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 411
+        width: 1026
+        height: 821
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7818ff83a7331b8d0800000000000000
+      internalID: -2832426090604035705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_1
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 1132
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb630bf88d8f69880800000000000000
+      internalID: -8604416429037439300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_2
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 988
+        width: 190
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b089d48058df20f0800000000000000
+      internalID: -1139454340363616073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_3
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 1108
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e10f6904eb6be5b0800000000000000
+      internalID: -5338054306162605599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_4
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1068
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6191bcaf970be3510800000000000000
+      internalID: 1530854961297692950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_5
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 1036
+        width: 57
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9d4f83b98d1952d0800000000000000
+      internalID: -3289565575557198437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_6
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 1076
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56de76c5eec0ba8d0800000000000000
+      internalID: -2834157322607530651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_7
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 1076
+        width: 24
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e700c820eb7e41cf0800000000000000
+      internalID: -282346073344966530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_8
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1058
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 914d97a27e5e36550800000000000000
+      internalID: 6153014296931062809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_9
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 1050
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb1b533dbed4ad940800000000000000
+      internalID: 5321651584947827131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_10
+      rect:
+        serializedVersion: 2
+        x: 573
+        y: 1016
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3312e31d81ae03110800000000000000
+      internalID: 1238747289837510963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_11
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 998
+        width: 40
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 397f645a268e83660800000000000000
+      internalID: 7365892700941776787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_12
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 1018
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10114177ce7c8d900800000000000000
+      internalID: 709536759734866177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_13
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 1012
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82ecfb13dfd64e420800000000000000
+      internalID: 2658370614284242472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_14
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 972
+        width: 41
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 488ad15aa971389e0800000000000000
+      internalID: -1620425487960659836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_15
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 1004
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0caf7cb008273be20800000000000000
+      internalID: 3365159240854928064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_16
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 1002
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7120a5f4fc2432bd0800000000000000
+      internalID: -2656205897061498345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_17
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 944
+        width: 29
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 628a6889b8b4e9600800000000000000
+      internalID: 476901673479350310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_18
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 947
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6cf9255eebbc9960800000000000000
+      internalID: 7610164102654721133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_19
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 978
+        width: 11
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5185616525eef1060800000000000000
+      internalID: 6926516789318146069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_20
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 841
+        width: 75
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9163e587af77a8500800000000000000
+      internalID: 399263434620679705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_21
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 947
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e453393b0d21791f0800000000000000
+      internalID: -1038340501510343346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_22
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 947
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5919e15283552be00800000000000000
+      internalID: 1059002562014777749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_23
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 889
+        width: 126
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 487f5991b47a6a0c0800000000000000
+      internalID: -4564777231299774588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_24
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 927
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6515c5e6718d60150800000000000000
+      internalID: 5838591562079818070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_25
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 934
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64dbf612ce3f9e680800000000000000
+      internalID: -8725174607554822842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_26
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 915
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ff63f7cfa7241680800000000000000
+      internalID: -8785353337165615115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_27
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 915
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02902f1d4c18e68c0800000000000000
+      internalID: -4004120336349918944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_28
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 862
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0dfbac7d6389b3d0800000000000000
+      internalID: -3190374354748965617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_29
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 839
+        width: 18
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d710b52729fed8c0800000000000000
+      internalID: -3972463874762860584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_30
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 170
+        width: 150
+        height: 633
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fbadb26332d25070800000000000000
+      internalID: 8093762598479965169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_31
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 796
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f08558f52841c700800000000000000
+      internalID: 558807156687995122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_32
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 759
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf9ff5ec438e81b80800000000000000
+      internalID: -8423727789498172933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_33
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 707
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 234d9590c74a0ff70800000000000000
+      internalID: 9219049289867187250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_34
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 676
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3db9d85c346d26c20800000000000000
+      internalID: 3198354271952018387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_35
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 664
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 937233c52511e3440800000000000000
+      internalID: 4917386888567007033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_36
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 644
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f01256a720cae15f0800000000000000
+      internalID: -784000158472527601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_37
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 662
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9703dea17daf1370800000000000000
+      internalID: 8295539742415718302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_38
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 614
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b202fded848a96070800000000000000
+      internalID: 8100190435732824107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_39
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 615
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98f7d4e4e60cf6da0800000000000000
+      internalID: -5949325002740498551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_40
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 614
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69b8b568ab0207030800000000000000
+      internalID: 3490325696702286742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_41
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 625
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57cbc14ffce16db00800000000000000
+      internalID: 852903057935875189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_42
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 617
+        width: 37
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6816af4ce174bc570800000000000000
+      internalID: 8487956120189165958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_43
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 600
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2638ca71668954a0800000000000000
+      internalID: -6604099625332230614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_44
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 393
+        width: 138
+        height: 210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2297d209a28e01690800000000000000
+      internalID: -7633346098887821022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_45
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0
+        width: 871
+        height: 581
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aef48f62953335950800000000000000
+      internalID: 6436544750441484266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_46
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 546
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7d4e9416c72b0e10800000000000000
+      internalID: 2164867777584582010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_47
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 439
+        width: 83
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 200fb9445f3e378b0800000000000000
+      internalID: -5155526505851523070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_48
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 456
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95d4881674d9a06e0800000000000000
+      internalID: -1870509765314458279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_49
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 256
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fea464ba3c0cfb00800000000000000
+      internalID: 863578674822426361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_50
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 216
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4e1f3aa5426408d0800000000000000
+      internalID: -2881069810261746101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_51
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 242
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 643acebfff7203c10800000000000000
+      internalID: 2031167412340826950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_52
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 264
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10a57ff58acfdf010800000000000000
+      internalID: 1224412473809394177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_53
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 246
+        width: 75
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7ba164946b63cd60800000000000000
+      internalID: 7909283450323053438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_54
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 310
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2678134140b3f2a50800000000000000
+      internalID: 6498477676023613282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_55
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 227
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec32181ebd7509800800000000000000
+      internalID: 617089750842549198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_56
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 208
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66eb5009c0c393d10800000000000000
+      internalID: 2105780325425987174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_57
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 186
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af99782be375722d0800000000000000
+      internalID: -3303575874858149382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_58
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 178
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dd8e35d2d3bbbb60800000000000000
+      internalID: 7762996100805332434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_59
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 165
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 141a75af0d6e8cc60800000000000000
+      internalID: 7838768936665981249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_60
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 169
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 611cf30d271f4a940800000000000000
+      internalID: 5306631736371691798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_Wind_61
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 154
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5825c08298da9d350800000000000000
+      internalID: 6042051179688252037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Ability_Wind_0: -2832426090604035705
+      Ability_Wind_1: -8604416429037439300
+      Ability_Wind_10: 1238747289837510963
+      Ability_Wind_11: 7365892700941776787
+      Ability_Wind_12: 709536759734866177
+      Ability_Wind_13: 2658370614284242472
+      Ability_Wind_14: -1620425487960659836
+      Ability_Wind_15: 3365159240854928064
+      Ability_Wind_16: -2656205897061498345
+      Ability_Wind_17: 476901673479350310
+      Ability_Wind_18: 7610164102654721133
+      Ability_Wind_19: 6926516789318146069
+      Ability_Wind_2: -1139454340363616073
+      Ability_Wind_20: 399263434620679705
+      Ability_Wind_21: -1038340501510343346
+      Ability_Wind_22: 1059002562014777749
+      Ability_Wind_23: -4564777231299774588
+      Ability_Wind_24: 5838591562079818070
+      Ability_Wind_25: -8725174607554822842
+      Ability_Wind_26: -8785353337165615115
+      Ability_Wind_27: -4004120336349918944
+      Ability_Wind_28: -3190374354748965617
+      Ability_Wind_29: -3972463874762860584
+      Ability_Wind_3: -5338054306162605599
+      Ability_Wind_30: 8093762598479965169
+      Ability_Wind_31: 558807156687995122
+      Ability_Wind_32: -8423727789498172933
+      Ability_Wind_33: 9219049289867187250
+      Ability_Wind_34: 3198354271952018387
+      Ability_Wind_35: 4917386888567007033
+      Ability_Wind_36: -784000158472527601
+      Ability_Wind_37: 8295539742415718302
+      Ability_Wind_38: 8100190435732824107
+      Ability_Wind_39: -5949325002740498551
+      Ability_Wind_4: 1530854961297692950
+      Ability_Wind_40: 3490325696702286742
+      Ability_Wind_41: 852903057935875189
+      Ability_Wind_42: 8487956120189165958
+      Ability_Wind_43: -6604099625332230614
+      Ability_Wind_44: -7633346098887821022
+      Ability_Wind_45: 6436544750441484266
+      Ability_Wind_46: 2164867777584582010
+      Ability_Wind_47: -5155526505851523070
+      Ability_Wind_48: -1870509765314458279
+      Ability_Wind_49: 863578674822426361
+      Ability_Wind_5: -3289565575557198437
+      Ability_Wind_50: -2881069810261746101
+      Ability_Wind_51: 2031167412340826950
+      Ability_Wind_52: 1224412473809394177
+      Ability_Wind_53: 7909283450323053438
+      Ability_Wind_54: 6498477676023613282
+      Ability_Wind_55: 617089750842549198
+      Ability_Wind_56: 2105780325425987174
+      Ability_Wind_57: -3303575874858149382
+      Ability_Wind_58: 7762996100805332434
+      Ability_Wind_59: 7838768936665981249
+      Ability_Wind_6: -2834157322607530651
+      Ability_Wind_60: 5306631736371691798
+      Ability_Wind_61: 6042051179688252037
+      Ability_Wind_7: -282346073344966530
+      Ability_Wind_8: 6153014296931062809
+      Ability_Wind_9: 5321651584947827131
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

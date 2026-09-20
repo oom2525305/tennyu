@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 097c61f233b1408428f7ebc01fe946f2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -538391366925980363
+    second: tenyu_Buttonwhite_0
+  - first:
+      213: 1379447225324168584
+    second: tenyu_Buttonwhite_1
+  - first:
+      213: -7611089752151739156
+    second: tenyu_Buttonwhite_2
+  - first:
+      213: -4027831686011567695
+    second: tenyu_Buttonwhite_3
+  - first:
+      213: 551256030614765335
+    second: tenyu_Buttonwhite_4
+  - first:
+      213: 5115246764605574598
+    second: tenyu_Buttonwhite_5
+  - first:
+      213: -4984240028674026312
+    second: tenyu_Buttonwhite_6
+  - first:
+      213: -8723861969371634493
+    second: tenyu_Buttonwhite_7
+  - first:
+      213: 8997498610993576275
+    second: tenyu_Buttonwhite_8
+  - first:
+      213: -5955136348254993165
+    second: tenyu_Buttonwhite_9
+  - first:
+      213: 1197313646405167832
+    second: tenyu_Buttonwhite_10
+  - first:
+      213: -7117575473011746843
+    second: tenyu_Buttonwhite_11
+  - first:
+      213: -6162783060697642255
+    second: tenyu_Buttonwhite_12
+  - first:
+      213: 7505242484550732992
+    second: tenyu_Buttonwhite_13
+  - first:
+      213: -3333693690203962014
+    second: tenyu_Buttonwhite_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 0
+        width: 1957
+        height: 793
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53d6d3087ef3788f0800000000000000
+      internalID: -538391366925980363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_1
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 758
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88568db51f7c42310800000000000000
+      internalID: 1379447225324168584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_2
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 778
+        width: 33
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce43169123aff5690800000000000000
+      internalID: -7611089752151739156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_3
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 783
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b1c7340c644a18c0800000000000000
+      internalID: -4027831686011567695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_4
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 775
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71fb51d607476a700800000000000000
+      internalID: 551256030614765335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_5
+      rect:
+        serializedVersion: 2
+        x: 1490
+        y: 768
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd08c6a4d10df640800000000000000
+      internalID: 5115246764605574598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_6
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 762
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b41a9ff91c64dab0800000000000000
+      internalID: -4984240028674026312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_7
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 754
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c4601682cd9ee680800000000000000
+      internalID: -8723861969371634493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_8
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 52
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 359b75fd0598ddc70800000000000000
+      internalID: 8997498610993576275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_9
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 47
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f48e3dfa0b1b5da0800000000000000
+      internalID: -5955136348254993165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_10
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 32
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8da25b2fa66bd9010800000000000000
+      internalID: 1197313646405167832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_11
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 37
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e71a1d51da493d90800000000000000
+      internalID: -7117575473011746843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_12
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 31
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fa82574575697aa0800000000000000
+      internalID: -6162783060697642255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_13
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 29
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cc01d4764af72860800000000000000
+      internalID: 7505242484550732992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Buttonwhite_14
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 31
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2658e6d50475cb1d0800000000000000
+      internalID: -3333693690203962014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tenyu_Buttonwhite_0: -538391366925980363
+      tenyu_Buttonwhite_1: 1379447225324168584
+      tenyu_Buttonwhite_10: 1197313646405167832
+      tenyu_Buttonwhite_11: -7117575473011746843
+      tenyu_Buttonwhite_12: -6162783060697642255
+      tenyu_Buttonwhite_13: 7505242484550732992
+      tenyu_Buttonwhite_14: -3333693690203962014
+      tenyu_Buttonwhite_2: -7611089752151739156
+      tenyu_Buttonwhite_3: -4027831686011567695
+      tenyu_Buttonwhite_4: 551256030614765335
+      tenyu_Buttonwhite_5: 5115246764605574598
+      tenyu_Buttonwhite_6: -4984240028674026312
+      tenyu_Buttonwhite_7: -8723861969371634493
+      tenyu_Buttonwhite_8: 8997498610993576275
+      tenyu_Buttonwhite_9: -5955136348254993165
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
