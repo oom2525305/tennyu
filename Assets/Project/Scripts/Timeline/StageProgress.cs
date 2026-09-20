@@ -7,6 +7,19 @@ namespace Tenyu.Timeline
         private const string ClearKeyPrefix =
             "StageCleared_";
 
+        // ステージ1は常に解放。
+        // それ以降は直前のステージのクリアが条件。
+        public static bool IsUnlocked(int stageId)
+        {
+            if (stageId < 1)
+                return false;
+
+            if (stageId == 1)
+                return true;
+
+            return IsCleared(stageId - 1);
+        }
+
         public static bool IsCleared(int stageId)
         {
             return PlayerPrefs.GetInt(
@@ -34,8 +47,7 @@ namespace Tenyu.Timeline
             PlayerPrefs.Save();
         }
 
-        private static string GetClearKey(
-            int stageId)
+        private static string GetClearKey(int stageId)
         {
             return ClearKeyPrefix + stageId;
         }
