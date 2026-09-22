@@ -70,6 +70,79 @@ public class DivinePowerSystem2D : MonoBehaviour
     [SerializeField]
     private GameObject rainEffectPrefab;
 
+    [Header("クールタイム（ゲーム内秒）")]
+    [SerializeField, Min(0f)] private float windCooldown = 5f;
+    [SerializeField, Min(0f)] private float thunderCooldown = 5f;
+    [SerializeField, Min(0f)] private float rainCooldown = 5f;
+
+    private float remainingWindCooldown;
+    private float remainingThunderCooldown;
+    private float remainingRainCooldown;
+
+    private void Update()
+    {
+        if (!CanCastAbilities)
+            return;
+
+        float deltaTime = StageTime.DeltaTime;
+        remainingWindCooldown = Mathf.Max(0f, remainingWindCooldown - deltaTime);
+        remainingThunderCooldown = Mathf.Max(0f, remainingThunderCooldown - deltaTime);
+        remainingRainCooldown = Mathf.Max(0f, remainingRainCooldown - deltaTime);
+    }
+
+    public float GetCooldownDuration(DivinePowerType powerType)
+    {
+        switch (powerType)
+        {
+            case DivinePowerType.Wind: return windCooldown;
+            case DivinePowerType.Thunder: return thunderCooldown;
+            case DivinePowerType.Rain: return rainCooldown;
+            default: return 0f;
+        }
+    }
+
+    public float GetRemainingCooldown(DivinePowerType powerType)
+    {
+        switch (powerType)
+        {
+            case DivinePowerType.Wind: return remainingWindCooldown;
+            case DivinePowerType.Thunder: return remainingThunderCooldown;
+            case DivinePowerType.Rain: return remainingRainCooldown;
+            default: return 0f;
+        }
+    }
+
+    public float GetCooldown01(DivinePowerType powerType)
+    {
+        float duration = GetCooldownDuration(powerType);
+        return duration > 0f
+            ? Mathf.Clamp01(GetRemainingCooldown(powerType) / duration)
+            : 0f;
+    }
+
+    public bool CanCast(DivinePowerType powerType)
+    {
+        return CanCastAbilities &&
+               GetRemainingUses(powerType) > 0 &&
+               GetRemainingCooldown(powerType) <= 0f;
+    }
+
+    private void StartCooldown(DivinePowerType powerType)
+    {
+        switch (powerType)
+        {
+            case DivinePowerType.Wind:
+                remainingWindCooldown = Mathf.Max(0f, windCooldown);
+                break;
+            case DivinePowerType.Thunder:
+                remainingThunderCooldown = Mathf.Max(0f, thunderCooldown);
+                break;
+            case DivinePowerType.Rain:
+                remainingRainCooldown = Mathf.Max(0f, rainCooldown);
+                break;
+        }
+    }
+
     [Header("テスト")]
     [SerializeField]
     private DivinePowerType testPower;
@@ -124,12 +197,18 @@ public class DivinePowerSystem2D : MonoBehaviour
         Vector2 worldPosition,
         Vector2 direction)
     {
-        if (!CanCastAbilities ||
-            GetRemainingUses(powerType) <= 0)
+        if (!CanCast(powerType))
         {
             return false;
         }
 
+        // 方向未指定の風は発動しない。
+        if (powerType == DivinePowerType.Wind &&
+            direction.sqrMagnitude <= 0.001f)
+            return false;
+
+        // 通知でUIが更新される前に、再使用を制限する。
+        StartCooldown(powerType);
         ConsumeUse(powerType);
 
         if (powerType == DivinePowerType.Rain)
@@ -455,6 +534,10 @@ public class DivinePowerSystem2D : MonoBehaviour
 
     public void ResetUses()
     {
+        remainingWindCooldown = 0f;
+        remainingThunderCooldown = 0f;
+        remainingRainCooldown = 0f;
+
         remainingWindUses =
             maxWindUses;
 

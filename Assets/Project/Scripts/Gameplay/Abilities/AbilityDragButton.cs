@@ -550,7 +550,7 @@ public class AbilityDragButton :
     {
         return isUsable &&
                powerSystem != null &&
-               powerSystem.CanCastAbilities;
+               powerSystem.CanCast(powerType);
     }
 
     private void RefreshInteractionState()
