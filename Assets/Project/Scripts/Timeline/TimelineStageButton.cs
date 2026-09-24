@@ -5,8 +5,7 @@ using UnityEngine.UI;
 namespace Tenyu.Timeline
 {
     [RequireComponent(typeof(Button))]
-    public sealed class TimelineStageButton :
-        MonoBehaviour
+    public sealed class TimelineStageButton : MonoBehaviour
     {
         [Header("ステージ")]
         [SerializeField]
@@ -25,54 +24,78 @@ namespace Tenyu.Timeline
         [SerializeField]
         private GameObject clearMark;
 
+        [Header("ロック表示")]
+        [SerializeField]
+        private GameObject lockIcon;
+
         private Button button;
 
         private void Awake()
         {
             button = GetComponent<Button>();
-
-            button.onClick.AddListener(
-                HandleClick
-            );
+            button.onClick.AddListener(HandleClick);
         }
 
-        private void Start()
+        private void OnEnable()
         {
             Refresh();
         }
 
         public void Refresh()
         {
+            if (button == null)
+                button = GetComponent<Button>();
+
             if (stageData == null)
+            {
+                button.interactable = false;
+
+                if (stageNameText != null)
+                    stageNameText.text = "";
+
+                if (yearText != null)
+                    yearText.text = "";
+
+                if (clearMark != null)
+                    clearMark.SetActive(false);
+
+                if (lockIcon != null)
+                    lockIcon.SetActive(false);
+
                 return;
+            }
+
+            bool isUnlocked =
+                StageProgress.IsUnlocked(stageData.StageId);
+
+            bool isCleared =
+                StageProgress.IsCleared(stageData.StageId);
 
             if (stageNameText != null)
-            {
-                stageNameText.text =
-                    stageData.StageName;
-            }
+                stageNameText.text = stageData.StageName;
 
             if (yearText != null)
-            {
-                yearText.text =
-                    stageData.Year;
-            }
+                yearText.text = stageData.Year;
+
+            // 未解放のボタンは操作できない。
+            button.interactable = isUnlocked;
+
+            if (lockIcon != null)
+                lockIcon.SetActive(!isUnlocked);
 
             if (clearMark != null)
-            {
-                clearMark.SetActive(
-                    StageProgress.IsCleared(
-                        stageData.StageId
-                    )
-                );
-            }
+                clearMark.SetActive(isUnlocked && isCleared);
         }
 
         private void HandleClick()
         {
-            if (stageData == null ||
-                timelineUI == null)
+            if (stageData == null || timelineUI == null)
+                return;
+
+            // 呼び出し時にも解放状態を確認。
+            if (!StageProgress.IsUnlocked(stageData.StageId))
             {
+                Refresh();
                 return;
             }
 
@@ -82,11 +105,7 @@ namespace Tenyu.Timeline
         private void OnDestroy()
         {
             if (button != null)
-            {
-                button.onClick.RemoveListener(
-                    HandleClick
-                );
-            }
+                button.onClick.RemoveListener(HandleClick);
         }
     }
 }
