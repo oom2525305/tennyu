@@ -531,8 +531,8 @@ MonoBehaviour:
   powerType: 0
   countText: {fileID: 3157358784140539476}
   dragButton: {fileID: 7676295451709999154}
-  cooldownFill: {fileID: 0}
-  cooldownText: {fileID: 0}
+  cooldownFill: {fileID: 1170754242880040693}
+  cooldownText: {fileID: 6298090744911261407}
 --- !u!1 &8727170023622920299
 GameObject:
   m_ObjectHideFlags: 0

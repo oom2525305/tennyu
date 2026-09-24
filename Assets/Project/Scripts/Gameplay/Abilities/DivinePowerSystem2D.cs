@@ -85,6 +85,7 @@ public class DivinePowerSystem2D : MonoBehaviour
             return;
 
         float deltaTime = StageTime.DeltaTime;
+        remainingGhostCooldown = Mathf.Max(0f, remainingGhostCooldown - deltaTime);
         remainingWindCooldown = Mathf.Max(0f, remainingWindCooldown - deltaTime);
         remainingThunderCooldown = Mathf.Max(0f, remainingThunderCooldown - deltaTime);
         remainingRainCooldown = Mathf.Max(0f, remainingRainCooldown - deltaTime);
@@ -94,6 +95,7 @@ public class DivinePowerSystem2D : MonoBehaviour
     {
         switch (powerType)
         {
+            case DivinePowerType.Ghost: return ghostCooldown;
             case DivinePowerType.Wind: return windCooldown;
             case DivinePowerType.Thunder: return thunderCooldown;
             case DivinePowerType.Rain: return rainCooldown;
@@ -105,6 +107,7 @@ public class DivinePowerSystem2D : MonoBehaviour
     {
         switch (powerType)
         {
+            case DivinePowerType.Ghost: return remainingGhostCooldown;
             case DivinePowerType.Wind: return remainingWindCooldown;
             case DivinePowerType.Thunder: return remainingThunderCooldown;
             case DivinePowerType.Rain: return remainingRainCooldown;
@@ -123,6 +126,8 @@ public class DivinePowerSystem2D : MonoBehaviour
     public bool CanCast(DivinePowerType powerType)
     {
         return CanCastAbilities &&
+               (powerType != DivinePowerType.Ghost ||
+                (ghostPrefab != null && ghostPrefab.gameObject.activeSelf && ghostPrefab.enabled)) &&
                GetRemainingUses(powerType) > 0 &&
                GetRemainingCooldown(powerType) <= 0f;
     }
@@ -131,6 +136,9 @@ public class DivinePowerSystem2D : MonoBehaviour
     {
         switch (powerType)
         {
+            case DivinePowerType.Ghost:
+                remainingGhostCooldown = Mathf.Max(0f, ghostCooldown);
+                break;
             case DivinePowerType.Wind:
                 remainingWindCooldown = Mathf.Max(0f, windCooldown);
                 break;
@@ -140,6 +148,31 @@ public class DivinePowerSystem2D : MonoBehaviour
             case DivinePowerType.Rain:
                 remainingRainCooldown = Mathf.Max(0f, rainCooldown);
                 break;
+        }
+    }
+
+    [Header("幽霊")]
+    [SerializeField] private GhostLure2D ghostPrefab;
+    [SerializeField, Min(0)] private int maxGhostUses = 2;
+    [SerializeField, Min(0f)] private float ghostCooldown = 5f;
+    [SerializeField, Min(0.1f)] private float ghostDuration = 4f;
+    [SerializeField, Min(0.1f)] private float ghostRadius = 3f;
+    private int remainingGhostUses;
+    private float remainingGhostCooldown;
+    private GhostLure2D activeGhost;
+
+    public float GetEffectRadius(DivinePowerType powerType)
+    {
+        return powerType == DivinePowerType.Ghost ? ghostRadius : effectRadius;
+    }
+
+    private void ClearGhost()
+    {
+        if (activeGhost != null)
+        {
+            activeGhost.gameObject.SetActive(false);
+            Destroy(activeGhost.gameObject);
+            activeGhost = null;
         }
     }
 
@@ -200,6 +233,16 @@ public class DivinePowerSystem2D : MonoBehaviour
         if (!CanCast(powerType))
         {
             return false;
+        }
+
+        if (powerType == DivinePowerType.Ghost)
+        {
+            ClearGhost();
+            activeGhost = Instantiate(ghostPrefab, worldPosition, Quaternion.identity);
+            activeGhost.Initialize(stageDirector, ghostDuration, ghostRadius);
+            StartCooldown(powerType);
+            ConsumeUse(powerType);
+            return true;
         }
 
         // 方向未指定の風は発動しない。
@@ -462,6 +505,7 @@ public class DivinePowerSystem2D : MonoBehaviour
 
     private void ClearSpawnedEffects()
     {
+        ClearGhost();
         for (int i = spawnedEffects.Count - 1;
             i >= 0;
             i--)
@@ -485,6 +529,9 @@ public class DivinePowerSystem2D : MonoBehaviour
             case DivinePowerType.Wind:
                 return remainingWindUses;
 
+            case DivinePowerType.Ghost:
+                return remainingGhostUses;
+
             case DivinePowerType.Thunder:
                 return remainingThunderUses;
 
@@ -501,6 +548,9 @@ public class DivinePowerSystem2D : MonoBehaviour
     {
         switch (powerType)
         {
+            case DivinePowerType.Ghost:
+                remainingGhostUses = Mathf.Max(0, remainingGhostUses - 1);
+                break;
             case DivinePowerType.Wind:
                 remainingWindUses =
                     Mathf.Max(
@@ -534,6 +584,9 @@ public class DivinePowerSystem2D : MonoBehaviour
 
     public void ResetUses()
     {
+        ClearGhost();
+        remainingGhostCooldown = 0f;
+        remainingGhostUses = maxGhostUses;
         remainingWindCooldown = 0f;
         remainingThunderCooldown = 0f;
         remainingRainCooldown = 0f;
@@ -546,6 +599,8 @@ public class DivinePowerSystem2D : MonoBehaviour
 
         remainingRainUses =
             maxRainUses;
+
+        RemainingUsesChanged?.Invoke(DivinePowerType.Ghost, remainingGhostUses);
 
         RemainingUsesChanged?.Invoke(
             DivinePowerType.Wind,

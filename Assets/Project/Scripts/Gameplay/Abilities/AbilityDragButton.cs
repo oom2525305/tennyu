@@ -520,7 +520,7 @@ public class AbilityDragButton :
 
         rangeIndicator.Show(
             worldPosition,
-            powerSystem.EffectRadius
+            powerSystem.GetEffectRadius(powerType)
         );
     }
 
@@ -534,7 +534,7 @@ public class AbilityDragButton :
 
         rangeIndicator.Show(
             lockedWorldPosition,
-            powerSystem.EffectRadius
+            powerSystem.GetEffectRadius(powerType)
         );
     }
 
