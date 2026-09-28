@@ -758,6 +758,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549134482}
   m_CullTransparentMesh: 1
+--- !u!1 &568031919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 568031921}
+  - component: {fileID: 568031920}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &568031920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568031919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28e1d1cac912224782e1d702b5294f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuSceneAudio
+  stageDirector: {fileID: 0}
+  powerSystem: {fileID: 0}
+  bgm: {fileID: 8300000, guid: 24c62988947b7ec48a7e701c2e8d8590, type: 3}
+  bgmVolume: 0.3
+  pausedBgmMultiplier: 0.4
+  buttonSound: {fileID: 8300000, guid: 26aca67bdb096504e8f332e40307999f, type: 3}
+  beginSound: {fileID: 8300000, guid: d326e097b042f05499bcad02be61ba8b, type: 3}
+  clearSound: {fileID: 8300000, guid: f0937029f7e33c54fb0db767695abc94, type: 3}
+  failSound: {fileID: 8300000, guid: 776999e029bce454db458bd7bdc2ce4e, type: 3}
+  windSound: {fileID: 8300000, guid: e13b356e1bc8bfa409b5a3089febf551, type: 3}
+  thunderSound: {fileID: 8300000, guid: 0a64b15b25942da498106ad075138478, type: 3}
+  ghostSound: {fileID: 0}
+  seVolume: 0.7
+--- !u!4 &568031921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568031919}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 465.0398, y: 268.95297, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &588596567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2940,3 +2997,4 @@ SceneRoots:
   - {fileID: 1540406215}
   - {fileID: 1196206404}
   - {fileID: 946649438}
+  - {fileID: 568031921}

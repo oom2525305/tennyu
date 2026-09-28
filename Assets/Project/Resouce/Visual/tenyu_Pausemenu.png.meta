@@ -1,25 +1,13 @@
 fileFormatVersion: 2
-guid: 22532f3ba4c5d50448f844bd22f9c5a9
+guid: d2f78f3cea662db489ebd757e538336c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1693850308272816679
-    second: tenyu_Pausetextbg_0
+      213: 421956621109275111
+    second: tenyu_Pausemenu_0
   - first:
-      213: 344803000282747600
-    second: tenyu_Pausetextbg_1
-  - first:
-      213: 2343156621126406544
-    second: tenyu_Pausetextbg_2
-  - first:
-      213: 326288180662359587
-    second: tenyu_Pausetextbg_3
-  - first:
-      213: -4181372867169027893
-    second: tenyu_Pausetextbg_4
-  - first:
-      213: 6508583755223012814
-    second: tenyu_Pausetextbg_5
+      213: 5874933237332936699
+    second: tenyu_Pausemenu_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -111,17 +99,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tenyu_Pausetextbg_0
+      name: tenyu_Pausemenu_0
       rect:
         serializedVersion: 2
-        x: 42
-        y: 24
-        width: 1911
-        height: 684
+        x: 0
+        y: 1389
+        width: 7
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 722894781e3c18710800000000000000
-      internalID: 1693850308272816679
+      spriteID: 7e9a7dfaf471bd500800000000000000
+      internalID: 421956621109275111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tenyu_Pausetextbg_1
+      name: tenyu_Pausemenu_1
       rect:
         serializedVersion: 2
-        x: 596
-        y: 646
-        width: 6
-        height: 7
+        x: 0
+        y: 0
+        width: 1119
+        height: 1384
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,96 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d2975d708cf8c400800000000000000
-      internalID: 344803000282747600
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tenyu_Pausetextbg_2
-      rect:
-        serializedVersion: 2
-        x: 191
-        y: 179
-        width: 10
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 09118574880948020800000000000000
-      internalID: 2343156621126406544
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tenyu_Pausetextbg_3
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 179
-        width: 11
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 326d9ce1f55378400800000000000000
-      internalID: 326288180662359587
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tenyu_Pausetextbg_4
-      rect:
-        serializedVersion: 2
-        x: 744
-        y: 134
-        width: 17
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bc8feeaf787c8f5c0800000000000000
-      internalID: -4181372867169027893
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tenyu_Pausetextbg_5
-      rect:
-        serializedVersion: 2
-        x: 1409
-        y: 31
-        width: 49
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ec512f00172235a50800000000000000
-      internalID: 6508583755223012814
+      spriteID: bf78d5217a4f78150800000000000000
+      internalID: 5874933237332936699
       vertices: []
       indices: 
       edges: []
@@ -260,12 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tenyu_Pausetextbg_0: 1693850308272816679
-      tenyu_Pausetextbg_1: 344803000282747600
-      tenyu_Pausetextbg_2: 2343156621126406544
-      tenyu_Pausetextbg_3: 326288180662359587
-      tenyu_Pausetextbg_4: -4181372867169027893
-      tenyu_Pausetextbg_5: 6508583755223012814
+      tenyu_Pausemenu_0: 421956621109275111
+      tenyu_Pausemenu_1: 5874933237332936699
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

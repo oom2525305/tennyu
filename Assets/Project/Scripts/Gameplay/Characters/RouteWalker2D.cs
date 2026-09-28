@@ -103,7 +103,7 @@ namespace Tenyu.Gameplay
 
         [Header("失敗時")]
         [SerializeField]
-        private float fallAngle = -90f;
+        private Sprite failedSprite;
 
         public bool HasFinishedRoute
         {
@@ -128,6 +128,7 @@ namespace Tenyu.Gameplay
 
         private int nextWaypointIndex;
         private bool hasFallen;
+        private bool keepFailedSpriteUntilPlaying;
 
         private void Awake()
         {
@@ -179,6 +180,20 @@ namespace Tenyu.Gameplay
                 Debug.LogError("RouteWalker2DのPathfinderにステージ内のGridPathfinder2Dを設定してください。", this);
         }
 
+        // 時間停止中でも失敗用の表示へ切り替える。
+        private void LateUpdate()
+        {
+            if (stageDirector != null && stageDirector.Phase == StagePhase.Failed)
+                FallSideways();
+
+            if (keepFailedSpriteUntilPlaying && stageDirector != null &&
+                stageDirector.Phase == StagePhase.Playing && !hasFallen)
+            {
+                keepFailedSpriteUntilPlaying = false;
+                UpdateDirectionSprite();
+            }
+        }
+
         private void FixedUpdate()
         {
             if (stageDirector == null)
@@ -199,7 +214,8 @@ namespace Tenyu.Gameplay
                 return;
             }
 
-            MoveCharacter();
+            if (!hasFallen)
+                MoveCharacter();
         }
 
         [Header("幽霊への反応")]
@@ -392,6 +408,10 @@ namespace Tenyu.Gameplay
 
         public void ResetWalker()
         {
+            // リトライ後は開始操作まで失敗イラストを維持する。
+            keepFailedSpriteUntilPlaying = failedSprite != null &&
+                (hasFallen || keepFailedSpriteUntilPlaying ||
+                 (stageDirector != null && stageDirector.Phase == StagePhase.Failed));
             ClearPath();
             HasFinishedRoute = false;
             hasFallen = false;
@@ -431,7 +451,10 @@ namespace Tenyu.Gameplay
                     initialVisualLocalScale;
             }
 
-            UpdateDirectionSprite();
+            if (keepFailedSpriteUntilPlaying && spriteRenderer != null)
+                spriteRenderer.sprite = failedSprite;
+            else
+                UpdateDirectionSprite();
 
             // Time.timeScaleが0でも表示とColliderを即座に同期する
             Physics2D.SyncTransforms();
@@ -446,29 +469,19 @@ namespace Tenyu.Gameplay
 
             hasFallen = true;
             windVelocity = Vector2.zero;
+            ClearPath();
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
 
-            if (visualTransform == null)
-            {
-                return;
-            }
-
-            float directionAngle =
-                lastDirection.x < 0f
-                    ? Mathf.Abs(fallAngle)
-                    : -Mathf.Abs(fallAngle);
-
-            visualTransform.localRotation =
-                initialVisualRotation *
-                Quaternion.Euler(
-                    0f,
-                    0f,
-                    directionAngle
-                );
+            // 既存の被弾処理との互換性のためメソッド名は維持する。
+            // 回転は加えず、専用イラストをそのまま表示する。
+            if (spriteRenderer != null && failedSprite != null)
+                spriteRenderer.sprite = failedSprite;
         }
 
         private void UpdateDirectionSprite()
         {
-            if (spriteRenderer == null)
+            if (spriteRenderer == null || hasFallen || keepFailedSpriteUntilPlaying)
             {
                 return;
             }

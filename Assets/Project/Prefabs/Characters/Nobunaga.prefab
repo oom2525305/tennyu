@@ -95,11 +95,20 @@ MonoBehaviour:
   upSprite: {fileID: 21300000, guid: 15ecf09d8a51a4942b7ac64799c19348, type: 3}
   leftSprite: {fileID: 21300000, guid: cc66a8ebf5040d342bb9bbaf778fa1d6, type: 3}
   rightSprite: {fileID: 21300000, guid: a43802b8ee11ecd4193ba9dd4aa871ee, type: 3}
+  pathfinder: {fileID: 0}
+  repathInterval: 0.5
+  showPlannedPath: 1
   moveSpeed: 2
   arrivalDistance: 0.03
   maxWindSpeed: 8
   windDeceleration: 7
-  fallAngle: -90
+  obstacleLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  obstacleSkin: 0.02
+  failedSprite: {fileID: 21300000, guid: 006689fa353a8ca4192293e64c1b804d, type: 3}
+  affectedByGhost: 1
+  ghostStoppingDistance: 0.25
 --- !u!58 &6561023857285179873
 CircleCollider2D:
   m_ObjectHideFlags: 0

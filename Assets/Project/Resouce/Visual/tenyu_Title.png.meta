@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: d2f78f3cea662db489ebd757e538336c
+guid: e23b872445d0b5848957d8e87ecf01f9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 421956621109275111
-    second: tenyu_Pausemenu_0
+      213: 5594036811260844946
+    second: tenyu_Title_0
   - first:
-      213: 5874933237332936699
-    second: tenyu_Pausemenu_1
+      213: -8253110455219742885
+    second: tenyu_Title_1
+  - first:
+      213: -31530441578784903
+    second: tenyu_Title_2
+  - first:
+      213: 4907338434699435778
+    second: tenyu_Title_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -99,17 +105,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tenyu_Pausemenu_0
+      name: tenyu_Title_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1389
-        width: 7
-        height: 13
+        x: 48
+        y: 15
+        width: 1697
+        height: 850
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7e9a7dfaf471bd500800000000000000
-      internalID: 421956621109275111
+      spriteID: 29b59a367d202ad40800000000000000
+      internalID: 5594036811260844946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tenyu_Pausemenu_1
+      name: tenyu_Title_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 220
         y: 0
-        width: 1119
-        height: 1384
+        width: 24
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +159,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf78d5217a4f78150800000000000000
-      internalID: 5874933237332936699
+      spriteID: b57909094cf077d80800000000000000
+      internalID: -8253110455219742885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Title_2
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 15
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 977d51efa3bff8ff0800000000000000
+      internalID: -31530441578784903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tenyu_Title_3
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 76
+        width: 90
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20f91e06e4e5a1440800000000000000
+      internalID: 4907338434699435778
       vertices: []
       indices: 
       edges: []
@@ -160,8 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tenyu_Pausemenu_0: 421956621109275111
-      tenyu_Pausemenu_1: 5874933237332936699
+      tenyu_Title_0: 5594036811260844946
+      tenyu_Title_1: -8253110455219742885
+      tenyu_Title_2: -31530441578784903
+      tenyu_Title_3: 4907338434699435778
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
