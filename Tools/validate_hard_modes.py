@@ -29,18 +29,32 @@ for entry in loader['stages']:
     power=d[6622081547540006974]
     assert power['maxWindUses']==2
     assert power['maxThunderUses']==(0 if i==2 else 1)
-    assert power['maxRainUses']==(2 if i==3 else 0)
+    assert power['maxRainUses']==(1 if i==3 else 0)
     assert power['maxGhostUses']==(2 if i==2 else 0)
     data=docs(ROOT/f'Assets/Project/Data/Stages/StageData_0{i}.asset')[11400000]
     for text in (data['hardDescription'],d[9200000000000000007]['m_text'],d[9200000000000000011]['m_text']):
         assert all(c.isspace() or ord(c) in glyphs for c in text),text
     assert math.ceil(len(data['hardDescription'])/30)*36<=160
+    if i==1:
+        for inst in (8780737418283595953,267101344948709861):
+            props={m['propertyPath']:m['value'] for m in d[inst]['m_Modification']['m_Modifications'] if m['target']['fileID']==7427197253491799233}
+            assert int(props['triggerOnApproach'])==1 and float(props['activationRadius'])==2
+            assert float(props['warningTime'])==1
+    if i==2:
+        assert d[9200000000000000020]['influence']['ghost']==1
+        assert d[9200000000000000520]['influence']['ghost']==1
+        assert d[9200000000000000520]['influence']['wind']==0
+        assert d[9200000000000000522]['statusText']['fileID']==0
+        assert power['ghostDuration']==6
+        walls=unary_union([Polygon([(p['x'],p['y']) for p in path]) for fid in (5751537408444854577,8849112982539888620) for path in d[fid]['m_Points']['m_Paths']])
+        assert walls.distance(Point(-.46,-.115))>.42
     if i==3:
         assert not any(v.get('m_EditorClassIdentifier','').endswith('WindRoadblock2D') for v in d.values())
         assert d[9200000000000000128]['initiallyBurning']==0 # fixed fence needs lightning
         assert d[9200000000000000404]['initiallyBurning']==1
         assert d[9200000000000000401]['blockingCollider']['fileID']==0
         walls=unary_union([Polygon([(p['x'],p['y']) for p in path]) for path in d[5751537408444854577]['m_Points']['m_Paths']])
+        assert math.dist((-.06,.005),(5.34,-.845))>2*(power['effectRadius']+.55)
         assert walls.distance(Point(1.7,3.14))>.47 # additional fire sits on the walkable upper road
     print('PASS hard stage',i,'registration, references, inventory, duration, text')
 s=docs(ROOT/'Assets/Project/Scenes/TimelineScene.unity');controller=s[1762420951]

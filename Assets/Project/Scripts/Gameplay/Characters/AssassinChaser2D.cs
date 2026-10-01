@@ -12,8 +12,10 @@ namespace Tenyu.Gameplay
         [SerializeField] private ProtectedTarget2D target;
         [SerializeField] private GridPathfinder2D pathfinder;
         [SerializeField] private SpriteRenderer visual;
+        [SerializeField] private Color idleColor = Color.white;
         [SerializeField] private AbilityRangeIndicator2D attackIndicator;
         [SerializeField] private TMP_Text statusText;
+        [SerializeField] private string statusPrefix;
         [SerializeField] private AudioSource warningSource;
         [SerializeField] private AudioClip warningSound;
         [SerializeField] private LayerMask obstacleLayers;
@@ -199,7 +201,8 @@ namespace Tenyu.Gameplay
         private void ClearPath() { path.Clear(); pathIndex = 0; pathTarget = null; repath = 0f; }
         private void SetStatus(string message)
         {
-            if (statusText != null && statusText.text != message) statusText.text = message;
+            string text = statusPrefix + message;
+            if (statusText != null && statusText.text != text) statusText.text = text;
         }
         private void StopWarning()
         {
@@ -207,7 +210,7 @@ namespace Tenyu.Gameplay
             warning = 0f;
             if (attackIndicator != null) attackIndicator.Hide();
             if (warningSource != null) warningSource.Stop();
-            if (visual != null) visual.color = Color.white;
+            if (visual != null) visual.color = idleColor;
         }
         private void OnDisable()
         {

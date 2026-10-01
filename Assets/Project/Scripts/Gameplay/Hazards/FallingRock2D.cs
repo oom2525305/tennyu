@@ -42,6 +42,11 @@ namespace Tenyu.Gameplay
         [SerializeField, Min(0.05f)]
         private float fallDuration = 0.6f;
 
+        [Header("接近で予告を開始（ハード用）")]
+        [SerializeField] private bool triggerOnApproach;
+        [SerializeField, Min(0.1f)] private float activationRadius = 2f;
+        private bool warningStarted;
+
         [Header("落下設定")]
         [SerializeField, Min(0.1f)]
         private float fallHeight = 5f;
@@ -133,6 +138,17 @@ namespace Tenyu.Gameplay
 
         private void UpdateWarning()
         {
+            if (!warningStarted)
+            {
+                foreach (Collider2D hit in Physics2D.OverlapCircleAll(targetPosition, activationRadius, protectedTargetLayers))
+                {
+                    if (hit.GetComponentInParent<ProtectedTarget2D>() == null) continue;
+                    warningStarted = true;
+                    break;
+                }
+                if (!warningStarted) return;
+            }
+
             remainingWarningTime -=
                 StageTime.DeltaTime;
 
@@ -320,6 +336,7 @@ namespace Tenyu.Gameplay
             }
 
             state = RockState.Waiting;
+            warningStarted = !triggerOnApproach;
             if (countdownText != null) countdownText.gameObject.SetActive(true);
             remainingWarningTime = warningTime;
             fallElapsed = 0f;
@@ -370,8 +387,8 @@ namespace Tenyu.Gameplay
                 return;
             }
 
-            countdownText.text =
-                $"落石 {remainingWarningTime:0.0}s";
+            countdownText.text = warningStarted
+                ? $"落石 {remainingWarningTime:0.0}s" : "接近で落石";
         }
 
         private void OnDisable()

@@ -7211,7 +7211,7 @@ MonoBehaviour:
     wind: 1
     thunder: 1
     rain: 0.5
-    ghost: 0
+    ghost: 1
   targetRigidbody: {fileID: 9200000000000000018}
   routeWalker: {fileID: 0}
   onThunder:

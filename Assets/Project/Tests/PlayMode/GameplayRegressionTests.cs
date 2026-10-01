@@ -232,6 +232,60 @@ public sealed class GameplayRegressionTests
         Assert.That((Vector3)Get(rock, "targetPosition"), Is.EqualTo(Vector3.zero));
         Assert.That(Get(rock, "state").ToString(), Is.EqualTo("Waiting"));
     }
+    [Test] public void GhostCancelsAssassinAttackAndPullsItAwayFromNobunaga()
+    {
+        var director = Director();
+        var targetGo = Make("Nobunaga", false); targetGo.layer = 6;
+        targetGo.transform.position = Vector3.right * 0.5f;
+        var target = targetGo.AddComponent(TypeOf("Tenyu.Gameplay.ProtectedTarget2D"));
+        Set(target, "stageDirector", director); targetGo.AddComponent<CircleCollider2D>().radius = 0.2f;
+        targetGo.SetActive(true);
+        var go = Make("Assassin", false); go.layer = 6;
+        var body = go.AddComponent<Rigidbody2D>(); body.bodyType = RigidbodyType2D.Kinematic;
+        go.AddComponent<CircleCollider2D>().radius = 0.3f;
+        go.AddComponent(TypeOf("DivinePowerReceiver2D"));
+        var chaser = go.AddComponent(TypeOf("Tenyu.Gameplay.AssassinChaser2D"));
+        Set(chaser, "stageDirector", director); Set(chaser, "target", target);
+        Set(chaser, "startDelay", 0f); Set(chaser, "obstacleLayers", (LayerMask)(1 << 7));
+        Set(chaser, "pathfinder", Make("Grid").AddComponent(TypeOf("Tenyu.Gameplay.GridPathfinder2D")));
+        go.SetActive(true); Call(chaser, "ResetChaser");
+        var ghostGo = Make("Ghost"); ghostGo.transform.position = Vector3.left;
+        var ghost = ghostGo.AddComponent(TypeOf("Tenyu.Gameplay.GhostLure2D"));
+        Call(ghost, "Initialize", director, 6f, 3f);
+        Call(director, "BeginStage"); Set(chaser, "windingUp", true); Set(chaser, "warning", 0f);
+        Physics2D.SyncTransforms(); Call(chaser, "FixedUpdate"); Physics2D.Simulate(Time.fixedDeltaTime);
+        Assert.That(body.position.x, Is.LessThan(0f));
+        Assert.That((bool)Get(chaser, "windingUp"), Is.False);
+        Assert.That(Property(director, "Phase").ToString(), Is.EqualTo("Playing"));
+        Call(director, "PauseStage"); float remaining = (float)Get(ghost, "remainingTime");
+        Call(ghost, "Update"); Assert.That((float)Get(ghost, "remainingTime"), Is.EqualTo(remaining));
+        ghostGo.SetActive(false);
+        Assert.That(ghost.GetType().GetMethod("FindFor").Invoke(null, new object[] { director, body.position }), Is.Null);
+    }
+
+    [Test] public void ApproachRockWaitsForTargetAndCanBePreemptedWithThunder()
+    {
+        var director = Director(); var root = Make("ApproachRock", false);
+        var rock = root.AddComponent(TypeOf("Tenyu.Gameplay.FallingRock2D"));
+        var impact = Make("Impact").transform; impact.SetParent(root.transform);
+        var receiverGo = Make("Receiver"); receiverGo.transform.SetParent(root.transform);
+        var receiver = receiverGo.AddComponent(TypeOf("DivinePowerReceiver2D"));
+        Set(rock, "stageDirector", director); Set(rock, "impactPoint", impact); Set(rock, "powerReceiver", receiver);
+        Set(rock, "triggerOnApproach", true); Set(rock, "warningTime", 0.8f);
+        root.SetActive(true); Call(rock, "ResetRock"); Call(director, "BeginStage");
+        Call(rock, "UpdateWarning");
+        Assert.That((bool)Get(rock, "warningStarted"), Is.False);
+        Assert.That((float)Get(rock, "remainingWarningTime"), Is.EqualTo(0.8f));
+        var target = Make("Nobunaga"); target.transform.position = Vector3.right * 1.5f;
+        target.AddComponent(TypeOf("Tenyu.Gameplay.ProtectedTarget2D")); target.AddComponent<CircleCollider2D>();
+        Physics2D.SyncTransforms(); Call(rock, "UpdateWarning");
+        Assert.That((bool)Get(rock, "warningStarted"), Is.True);
+        Call(director, "ResetStage");
+        Assert.That((bool)Get(rock, "warningStarted"), Is.False);
+        Call(director, "BeginStage"); Call(receiver, "ReceiveThunder", 1f);
+        Assert.That(Get(rock, "state").ToString(), Is.EqualTo("Falling"));
+    }
+
     [Test] public void RainExtinguishesAndWetFenceCannotIgniteUntilDry()
     {
         var director = Director(); var go = Make("Fence", false);

@@ -384,7 +384,7 @@ MonoBehaviour:
   maximumConductionDepth: 3
   maximumConductionTargets: 8
   rainStrength: 1
-  maxRainUses: 2
+  maxRainUses: 1
   rainEffectPrefab: {fileID: 2634253481033581039, guid: 930ec3ec6f898f34ab1b910268ca0b97, type: 3}
   windCooldown: 3
   thunderCooldown: 5

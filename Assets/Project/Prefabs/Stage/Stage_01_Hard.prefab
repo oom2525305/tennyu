@@ -2542,6 +2542,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 3205054097277162635}
     m_Modifications:
     - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
+      propertyPath: activationRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
+      propertyPath: triggerOnApproach
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
       propertyPath: hitRadius
       value: 0.85
       objectReference: {fileID: 0}
@@ -2595,7 +2603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
       propertyPath: warningTime
-      value: 11
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
       propertyPath: stageDirector
@@ -3540,6 +3548,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 3205054097277162635}
     m_Modifications:
     - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
+      propertyPath: activationRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
+      propertyPath: triggerOnApproach
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
       propertyPath: hitRadius
       value: 0.85
       objectReference: {fileID: 0}
@@ -3617,7 +3633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
       propertyPath: warningTime
-      value: 5.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
       propertyPath: stageDirector
@@ -4076,7 +4092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u98a82\u56de\u30fb\u96f71\u56de\u3002\u843d\u77f3\u306e\u7bc4\u56f2\u306b\u6ce8\u610f\u3002\n\u98a8\u3067\u4fe1\u9577\u3092\u907f\u96e3\u3055\u305b\u3088\u3046\u3002"
+  m_text: "\u63a5\u8fd1\u3067\u843d\u77f3\u3002\u96f71\u56de\u3092\u4f7f\u3046\u5ca9\u3092\u9078\u307c\u3046\u3002\n\u3082\u3046\u4e00\u65b9\u306f\u98a8\u3067\u4fe1\u9577\u3092\u9003\u304c\u305d\u3046\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fe98a8100d87999458ea5120435c6840, type: 2}
   m_sharedMaterial: {fileID: 6511763668949486534, guid: fe98a8100d87999458ea5120435c6840, type: 2}

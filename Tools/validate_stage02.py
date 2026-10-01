@@ -190,3 +190,6 @@ source = (ROOT/'Assets/Project/Scripts/Gameplay/Characters/AssassinChaser2D.cs')
 for label in re.findall(r'SetStatus\("([^"\n]+)"\)', source):
     assert all(c.isspace() or ord(c) in glyphs for c in label), ('missing glyph', label)
 print('PASS assassin spawn clearance, references, phase policy, warning tuning and dynamic text glyphs')
+
+assert ds[9200000000000000020][1]['MonoBehaviour']['influence']['ghost'] > 0
+print('PASS assassin ghost influence enabled')
