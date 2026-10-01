@@ -21,6 +21,8 @@ namespace Tenyu.Gameplay
         [SerializeField] private LayerMask obstacleLayers;
         [SerializeField, Min(0.1f)] private float moveSpeed = 1.05f;
         [SerializeField, Min(0f)] private float startDelay = 1.2f;
+        [Tooltip("0なら開始後に追跡。正の値なら見通しのある範囲への接近、または幽霊で追跡開始。")]
+        [SerializeField, Min(0f)] private float ambushDistance;
         [SerializeField, Min(0.1f)] private float attackDistance = 0.7f;
         [SerializeField, Min(0.1f)] private float strikeReach = 1.55f;
         [SerializeField, Min(0.1f)] private float warningDuration = 1.1f;
@@ -38,6 +40,7 @@ namespace Tenyu.Gameplay
         private float delay, recovery, warning, repath;
         private Transform pathTarget;
         private bool windingUp;
+        private bool alerted;
         private const float Skin = 0.02f;
 
         private void Awake()
@@ -65,6 +68,7 @@ namespace Tenyu.Gameplay
             body.angularVelocity = 0f;
             windVelocity = Vector2.zero;
             delay = startDelay;
+            alerted = ambushDistance <= 0f;
             recovery = 0f;
             ClearPath();
             StopWarning();
@@ -97,6 +101,12 @@ namespace Tenyu.Gameplay
             Vector2 next = body.position;
             GhostLure2D ghost = receiver.CanReceive(DivinePowerType.Ghost)
                 ? GhostLure2D.FindReachableFor(stageDirector, body, pathfinder, obstacleLayers, Skin) : null;
+            // 誘い出した敵は持ち場へ瞬間移動しない。リトライまで追跡を続ける。
+            if (!alerted)
+            {
+                alerted = ghost != null || CanStrike(ambushDistance);
+                if (!alerted) return;
+            }
             if (delay > 0f)
             {
                 delay = Mathf.Max(0f, delay - dt);

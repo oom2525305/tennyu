@@ -232,6 +232,51 @@ public sealed class GameplayRegressionTests
         Assert.That((Vector3)Get(rock, "targetPosition"), Is.EqualTo(Vector3.zero));
         Assert.That(Get(rock, "state").ToString(), Is.EqualTo("Waiting"));
     }
+    [TestCase(false)]
+    [TestCase(true)]
+    public void AmbushWaitsUntilApproachOrGhostAndResets(bool useGhost)
+    {
+        var director = Director();
+        var targetGo = Make("Nobunaga", false);
+        targetGo.transform.position = Vector3.right * 5f;
+        var target = targetGo.AddComponent(TypeOf("Tenyu.Gameplay.ProtectedTarget2D"));
+        Set(target, "stageDirector", director); targetGo.SetActive(true);
+        var go = Make("Ambush", false);
+        var body = go.AddComponent<Rigidbody2D>(); body.bodyType = RigidbodyType2D.Kinematic;
+        go.AddComponent<CircleCollider2D>().radius = 0.3f;
+        go.AddComponent(TypeOf("DivinePowerReceiver2D"));
+        var chaser = go.AddComponent(TypeOf("Tenyu.Gameplay.AssassinChaser2D"));
+        Set(chaser, "stageDirector", director); Set(chaser, "target", target);
+        Set(chaser, "startDelay", 0f); Set(chaser, "ambushDistance", 3f);
+        Set(chaser, "obstacleLayers", (LayerMask)(1 << 7));
+        Set(chaser, "pathfinder", Make("Grid").AddComponent(TypeOf("Tenyu.Gameplay.GridPathfinder2D")));
+        go.SetActive(true); Call(chaser, "ResetChaser"); Call(director, "BeginStage");
+        Physics2D.SyncTransforms(); Call(chaser, "FixedUpdate"); Physics2D.Simulate(Time.fixedDeltaTime);
+        Assert.That((bool)Get(chaser, "alerted"), Is.False);
+        Assert.That(body.position, Is.EqualTo(Vector2.zero));
+        GameObject ghostGo = null;
+        if (useGhost)
+        {
+            ghostGo = Make("Ghost"); ghostGo.transform.position = Vector3.left;
+            var ghost = ghostGo.AddComponent(TypeOf("Tenyu.Gameplay.GhostLure2D"));
+            Call(ghost, "Initialize", director, 6f, 3f);
+        }
+        else targetGo.transform.position = Vector3.right * 2f;
+        Physics2D.SyncTransforms();
+        Call(director, "PauseStage"); Call(chaser, "FixedUpdate");
+        Assert.That((bool)Get(chaser, "alerted"), Is.False, "Pause must not trigger an ambush");
+        Call(director, "ResumeStage"); Call(chaser, "FixedUpdate"); Physics2D.Simulate(Time.fixedDeltaTime);
+        Assert.That((bool)Get(chaser, "alerted"), Is.True);
+        Assert.That(useGhost ? body.position.x < 0f : body.position.x > 0f, Is.True);
+        if (ghostGo != null) ghostGo.SetActive(false);
+        targetGo.transform.position = Vector3.right * 5f;
+        Physics2D.SyncTransforms(); Call(chaser, "FixedUpdate");
+        Assert.That((bool)Get(chaser, "alerted"), Is.True, "A lured guard stays active");
+        Call(chaser, "ResetChaser");
+        Assert.That((bool)Get(chaser, "alerted"), Is.False);
+        Assert.That(body.position, Is.EqualTo(Vector2.zero));
+    }
+
     [Test] public void GhostCancelsAssassinAttackAndPullsItAwayFromNobunaga()
     {
         var director = Director();

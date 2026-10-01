@@ -6978,7 +6978,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u6697\u6bba\u8005\u3092\u8db3\u6b62\u3081\u3057\u3066\u3001\u53f3\u4e0a\u306e\u9580\u3078"
+  m_text: "\u9752\u3044\u6575\u306f\u63a5\u8fd1\u3059\u308b\u3068\u8ffd\u8de1\u3002\n\u5e7d\u970a\u3067\u5148\u306b\u8a98\u3044\u51fa\u305b\u308b\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fe98a8100d87999458ea5120435c6840, type: 2}
   m_sharedMaterial: {fileID: 6511763668949486534, guid: fe98a8100d87999458ea5120435c6840, type: 2}
@@ -7586,7 +7586,7 @@ MonoBehaviour:
   visual: {fileID: 9200000000000000021}
   attackIndicator: {fileID: 9200000000000000026}
   statusText: {fileID: 9200000000000000011}
-  statusPrefix: "青い敵は風無効\n"
+  statusPrefix: "\u9752\u3044\u6575\u306f\u5f85\u3061\u4f0f\u305b\u30fb\u98a8\u7121\u52b9\n"
   warningSource: {fileID: 9200000000000000027}
   warningSound: {fileID: 0}
   obstacleLayers:
@@ -8068,7 +8068,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   moveSpeed: 0.9
-  startDelay: 2
+  startDelay: 0
   attackDistance: 0.7
   strikeReach: 1.55
   warningDuration: 1.1
@@ -8077,3 +8077,4 @@ MonoBehaviour:
   maxWindSpeed: 4
   windDeceleration: 7
   idleColor: {r: 0.45, g: 0.7, b: 1, a: 1}
+  ambushDistance: 3

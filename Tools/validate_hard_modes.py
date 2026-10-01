@@ -46,6 +46,9 @@ for entry in loader['stages']:
         assert d[9200000000000000520]['influence']['wind']==0
         assert d[9200000000000000522]['statusText']['fileID']==0
         assert power['ghostDuration']==6
+        assert d[9200000000000000522]['ambushDistance']==3
+        assert d[9200000000000000522]['startDelay']==0
+        assert d[9200000000000000022].get('ambushDistance',0)==0
         walls=unary_union([Polygon([(p['x'],p['y']) for p in path]) for fid in (5751537408444854577,8849112982539888620) for path in d[fid]['m_Points']['m_Paths']])
         assert walls.distance(Point(-.46,-.115))>.42
     if i==3:
