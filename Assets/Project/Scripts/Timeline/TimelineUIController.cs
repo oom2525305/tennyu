@@ -184,9 +184,8 @@ namespace Tenyu.Timeline
                 5
             );
 
-            return
-                new string('★', value) +
-                new string('☆', 5 - value);
+            // 使用中の日本語フォントに星記号がないため、数字で表示する。
+            return $"難易度 {value} / 5";
         }
 
         private void OnDestroy()
