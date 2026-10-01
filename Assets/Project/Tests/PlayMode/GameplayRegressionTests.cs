@@ -67,6 +67,48 @@ public sealed class GameplayRegressionTests
         Physics2D.simulationMode = previousSimulation;
         Time.timeScale = previousScale; Time.fixedDeltaTime = previousStep;
     }
+    [Test] public void HardSelectionUsesItsPrefabAndKeepsLegacyClearRecordsSeparate()
+    {
+        var session = TypeOf("Tenyu.SceneFlow.GameSession");
+        var progress = TypeOf("Tenyu.Timeline.StageProgress");
+        var mode = TypeOf("Tenyu.SceneFlow.StageDifficulty");
+        var normal = Enum.Parse(mode, "Normal"); var hard = Enum.Parse(mode, "Hard");
+        var previousMode = session.GetProperty("SelectedDifficulty").GetValue(null);
+        const int stage = 928371;
+        string normalKey = "StageCleared_" + stage, hardKey = normalKey + "_Hard";
+        bool hadNormal = PlayerPrefs.HasKey(normalKey), hadHard = PlayerPrefs.HasKey(hardKey);
+        int oldNormal = PlayerPrefs.GetInt(normalKey), oldHard = PlayerPrefs.GetInt(hardKey);
+        try
+        {
+            PlayerPrefs.DeleteKey(normalKey); PlayerPrefs.DeleteKey(hardKey);
+            progress.GetMethod("SetCleared").Invoke(null, new object[] { stage, hard });
+            Assert.That(progress.GetMethod("IsCleared").Invoke(null, new object[] { stage, normal }), Is.False);
+            Assert.That(progress.GetMethod("IsCleared").Invoke(null, new object[] { stage, hard }), Is.True);
+            Assert.That(progress.GetMethod("IsUnlocked").Invoke(null, new object[] { stage + 1 }), Is.True);
+            // Previously saved normal records still use the original key.
+            PlayerPrefs.SetInt(normalKey, 1);
+            Assert.That(progress.GetMethod("IsCleared").Invoke(null, new object[] { stage, normal }), Is.True);
+
+            var loader = Make("Loader", false).AddComponent(TypeOf("Tenyu.Gameplay.StageLoader"));
+            var entryType = loader.GetType().GetNestedType("StageEntry", BindingFlags.NonPublic);
+            var entry = Activator.CreateInstance(entryType, true);
+            var normalPrefab = Make("Normal", false); var hardPrefab = Make("Hard", false);
+            Set(entry, "stageId", stage); Set(entry, "stagePrefab", normalPrefab); Set(entry, "hardStagePrefab", hardPrefab);
+            var entries = Array.CreateInstance(entryType, 1); entries.SetValue(entry, 0); Set(loader, "stages", entries);
+            session.GetMethod("SelectDifficulty").Invoke(null, new[] { hard });
+            Assert.That(Call(loader, "FindStagePrefab", stage), Is.SameAs(hardPrefab));
+            session.GetMethod("SelectDifficulty").Invoke(null, new[] { normal });
+            Assert.That(Call(loader, "FindStagePrefab", stage), Is.SameAs(normalPrefab));
+        }
+        finally
+        {
+            session.GetMethod("SelectDifficulty").Invoke(null, new[] { previousMode });
+            if (hadNormal) PlayerPrefs.SetInt(normalKey, oldNormal); else PlayerPrefs.DeleteKey(normalKey);
+            if (hadHard) PlayerPrefs.SetInt(hardKey, oldHard); else PlayerPrefs.DeleteKey(hardKey);
+            PlayerPrefs.Save();
+        }
+    }
+
     [Test] public void DiagonalWindKeepsItsActualDirection()
     {
         var go = Make("Ability");

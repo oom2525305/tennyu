@@ -14,6 +14,7 @@ namespace Tenyu.Gameplay
             public int stageId = 1;
 
             public GameObject stagePrefab;
+            public GameObject hardStagePrefab;
         }
 
         [Header("ステージ一覧")]
@@ -28,6 +29,8 @@ namespace Tenyu.Gameplay
         [SerializeField, Min(1)]
         private int editorTestStageId = 1;
 
+        [SerializeField] private StageDifficulty editorTestDifficulty;
+
         public GameObject CurrentStage { get; private set; }
 
         private void Awake()
@@ -38,6 +41,7 @@ namespace Tenyu.Gameplay
             if (useEditorTestStage)
             {
                 stageId = editorTestStageId;
+                GameSession.SelectDifficulty(editorTestDifficulty);
             }
 #endif
 
@@ -46,7 +50,7 @@ namespace Tenyu.Gameplay
             if (prefab == null)
             {
                 Debug.LogError(
-                    $"ステージID {stageId} のPrefabが未登録です。" +
+                    $"ステージID {stageId}（{GameSession.SelectedDifficulty}）のPrefabが未登録です。" +
                     "StageLoaderのStagesを確認してください。",
                     this
                 );
@@ -77,7 +81,7 @@ namespace Tenyu.Gameplay
             CurrentStage.name = prefab.name;
 
             Debug.Log(
-                $"ステージ {stageId} を読み込みました。",
+                $"ステージ {stageId}（{GameSession.SelectedDifficulty}）を読み込みました。",
                 this
             );
         }
@@ -110,7 +114,8 @@ namespace Tenyu.Gameplay
                 }
 
                 found = true;
-                result = entry.stagePrefab;
+                result = GameSession.SelectedDifficulty == StageDifficulty.Hard
+                    ? entry.hardStagePrefab : entry.stagePrefab;
             }
 
             return result;

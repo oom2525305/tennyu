@@ -38,7 +38,7 @@ namespace Tenyu.Gameplay
         private void SaveClearProgress()
         {
             StageProgress.SetCleared(
-                GameSession.SelectedStageId
+                GameSession.SelectedStageId, GameSession.SelectedDifficulty
             );
         }
 
