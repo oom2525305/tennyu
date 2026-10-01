@@ -32,3 +32,10 @@ Unity Editor・C#コンパイル・試遊はこの環境では未実施です。
 5. Unity Test RunnerのPlayModeで `GameplayRegressionTests` を実行。
 
 GameSceneを直接テストする場合はSceneNavigationではなくStageLoaderコンポーネントの `Use Editor Test Stage` をオンにし、`Editor Test Stage Id` と `Editor Test Difficulty` を指定してください。年表から選ぶときはオフに戻してください。
+
+
+## 切替ボタンの表示修正
+
+追加したDifficultyButtonのfileIDが符号付き64ビット整数の範囲を超えていたため、Unityで読み込めるIDへ修正し、親子関係・画像・文字・スクリプトの参照をすべて更新しました。既存アセットのGUIDは変更していません。全Scene／PrefabのID上限検査を追加しています。
+
+ボタンの場所は `TimelineScene / Canvas / StageDetailWindow / DifficultyButton` です。年表から解放済みステージを押して詳細を開くと、年号の右側に「ノーマル・切替」が表示されます。クリックすると「ハード・切替」へ変わり、説明・攻略状態も切り替わります。Unityでの実表示・クリックの確認は未実施です。

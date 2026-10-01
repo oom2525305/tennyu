@@ -7,6 +7,17 @@ ROOT=Path(__file__).resolve().parents[1]
 def docs(path):
     return {int(m[2]):next(iter(yaml.safe_load(m[3]).values())) for m in re.finditer(
         r'^--- !u!(\d+) &(-?\d+)(?: stripped)?\n(.*?)(?=^--- !u!|\Z)',path.read_text(),re.M|re.S)}
+# Unity local object IDs are signed 64-bit integers; Python/YAML accepts larger
+# numbers that Unity cannot import, so reference existence alone is insufficient.
+for asset in (ROOT/'Assets/Project').rglob('*'):
+    if asset.suffix not in ('.prefab', '.unity'):
+        continue
+    text=asset.read_text()
+    ids=re.findall(r'^--- !u!\d+ &(-?\d+)',text,re.M)
+    refs=re.findall(r'fileID: (-?\d+)',text)
+    assert all(-(2**63)<=int(n)<2**63 for n in ids+refs),asset
+    assert len(ids)==len(set(ids)),asset
+print('PASS all scene/prefab IDs and references fit Unity signed 64-bit range')
 loader=docs(ROOT/'Assets/Project/Scenes/GameScene.unity')[738214767]
 glyphs=set(map(int,re.findall(r'm_Unicode: (\d+)',(ROOT/'Assets/Project/Fonts/KaiseiTokumin-ExtraBold SDF.asset').read_text())))
 for entry in loader['stages']:
@@ -37,3 +48,12 @@ assert controller['difficultyButton']['fileID'] in s and controller['difficultyB
 for text in ('ノーマル・切替','ハード・切替'):
     assert all(c.isspace() or ord(c) in glyphs for c in text)
 print('PASS difficulty selector references; use Unity PlayMode tests for mode selection/save isolation')
+
+button=s[controller['difficultyButton']['fileID']]
+owner=s[button['m_GameObject']['fileID']]
+assert owner['m_IsActive']==1 and button['m_Enabled']==1 and button['m_Interactable']==1
+rect=next(s[c['component']['fileID']] for c in owner['m_Component'] if 'm_AnchoredPosition' in s[c['component']['fileID']])
+assert rect['m_Father']['fileID']==77202426
+assert any(s[c['fileID']] is rect for c in s[77202426]['m_Children'])
+assert s[button['m_TargetGraphic']['fileID']]['m_RaycastTarget']==1
+print('PASS active difficulty button is attached to the detail window and accepts input')
