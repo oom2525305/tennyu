@@ -423,6 +423,16 @@ namespace Tenyu.Gameplay
             }
         }
 
+        // Switch a stage route without teleporting or restoring a failed character.
+        public void SetRoute(Transform[] route)
+        {
+            if (route == null || route.Length == 0) return;
+            waypoints = route;
+            nextWaypointIndex = 0;
+            HasFinishedRoute = false;
+            ClearPath();
+        }
+
         public void ResetWalker()
         {
             // リトライ後は開始操作まで失敗イラストを維持する。

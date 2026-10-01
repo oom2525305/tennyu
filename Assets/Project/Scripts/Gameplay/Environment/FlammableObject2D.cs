@@ -25,6 +25,8 @@ namespace Tenyu.Gameplay
         [SerializeField]
         private Collider2D blockingCollider;
 
+        [SerializeField] private bool preventIgnitionWhileWet;
+
         [Header("着火設定")]
         [SerializeField, Min(0.01f)]
         private float ignitionThreshold = 1f;
@@ -150,6 +152,9 @@ namespace Tenyu.Gameplay
         private void ReceiveThunder(float strength)
         {
             if (IsBurning || HasBurnedOut)
+                return;
+
+            if (preventIgnitionWhileWet && TryGetComponent(out WettableObject2D wettable) && wettable.IsWet)
                 return;
 
             currentHeat += Mathf.Max(0f, strength);
