@@ -68,7 +68,6 @@ namespace Tenyu.Gameplay
 
         [Header("神の能力")]
         [SerializeField] private DivinePowerReceiver2D powerReceiver;
-        [SerializeField, Min(0f)] private float windDisplacement = 0.2f;
         private Vector3 countdownOffset;
 
         private RockState state;
@@ -95,7 +94,6 @@ namespace Tenyu.Gameplay
         {
             if (powerReceiver != null)
             {
-                powerReceiver.WindReceived += ReceiveWind;
                 powerReceiver.ThunderReceived += ReceiveThunder;
             }
             if (stageDirector != null)
@@ -164,15 +162,6 @@ namespace Tenyu.Gameplay
             if (strength > 0f && stageDirector != null &&
                 stageDirector.Phase == StagePhase.Playing && state == RockState.Waiting)
                 BeginFall();
-        }
-
-        private void ReceiveWind(Vector2 direction, float impulse)
-        {
-            if (stageDirector == null || stageDirector.Phase != StagePhase.Playing ||
-                state == RockState.Finished) return;
-            targetPosition += (Vector3)(direction.normalized * impulse * windDisplacement);
-            if (state == RockState.Waiting) startPosition = targetPosition + Vector3.up * fallHeight;
-            AlignWarning();
         }
 
         private void AlignWarning()
@@ -389,7 +378,6 @@ namespace Tenyu.Gameplay
         {
             if (powerReceiver != null)
             {
-                powerReceiver.WindReceived -= ReceiveWind;
                 powerReceiver.ThunderReceived -= ReceiveThunder;
             }
             StopSounds();

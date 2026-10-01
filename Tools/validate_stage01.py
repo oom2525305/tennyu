@@ -30,7 +30,9 @@ owner=rock[receiver['m_GameObject']['fileID']][1]
 assert owner['m_Layer']==6 and owner['m_IsActive']==1
 colliders=[rock[c['component']['fileID']][1] for c in owner['m_Component'] if rock[c['component']['fileID']][0]==58]
 assert len(colliders)==1 and colliders[0]['m_IsTrigger']==1
-assert controller['windDisplacement']>0
+assert receiver['influence']['wind']==0
+assert receiver['influence']['thunder']>0
+assert receiver['targetRigidbody']['fileID']==0
 assert rock[7765014546836242385][1]['m_RaycastTarget']==0
 for n in (1,2,3):
     stage=docs(ROOT/f'Assets/Project/Prefabs/Stage/Stage_0{n}.prefab')

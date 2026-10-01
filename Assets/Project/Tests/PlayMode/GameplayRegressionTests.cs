@@ -167,7 +167,7 @@ public sealed class GameplayRegressionTests
         Call(director, "BeginStage"); Call(goal, "TryClear", collider);
         Assert.That(Property(director, "Phase").ToString(), Is.EqualTo("Cleared"));
     }
-    [Test] public void RockReceivesThunderWindAndResetsItsLandingPoint()
+    [Test] public void RockIgnoresWindBeforeAndDuringFallAndStillResets()
     {
         var director = Director(); var root = Make("Rock", false);
         var rock = root.AddComponent(TypeOf("Tenyu.Gameplay.FallingRock2D"));
@@ -178,10 +178,14 @@ public sealed class GameplayRegressionTests
         root.SetActive(true); Call(rock, "ResetRock");
         Call(receiver, "ReceiveThunder", 1f);
         Assert.That(Get(rock, "state").ToString(), Is.EqualTo("Waiting"));
-        Call(director, "BeginStage"); Call(receiver, "ReceiveThunder", 1f);
+        Call(director, "BeginStage");
+        Call(receiver, "ReceiveWind", Vector2.right, 6f);
+        Assert.That((Vector3)Get(rock, "targetPosition"), Is.EqualTo(Vector3.zero));
+        Assert.That(receiverGo.transform.position, Is.EqualTo(Vector3.zero));
+        Call(receiver, "ReceiveThunder", 1f);
         Assert.That(Get(rock, "state").ToString(), Is.EqualTo("Falling"));
         Call(receiver, "ReceiveWind", Vector2.right, 6f);
-        Assert.That(((Vector3)Get(rock, "targetPosition")).x, Is.EqualTo(1.2f).Within(0.001f));
+        Assert.That(((Vector3)Get(rock, "targetPosition")).x, Is.EqualTo(0f).Within(0.001f));
         Call(director, "ResetStage");
         Assert.That((Vector3)Get(rock, "targetPosition"), Is.EqualTo(Vector3.zero));
         Assert.That(Get(rock, "state").ToString(), Is.EqualTo("Waiting"));

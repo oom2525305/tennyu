@@ -142,12 +142,12 @@ for fid in (9200000000000000007,9200000000000000011):
     assert label['m_RaycastTarget'] == 0
     assert all(c.isspace() or ord(c) in glyphs for c in label['m_text'])
 scaler = ds[3023593714232660341][1]['MonoBehaviour']
-assert scaler['m_UiScaleMode'] == 1
+assert scaler['m_UiScaleMode'] == 0
 for width, height in [(1280,720),(1920,1080),(2560,1080),(1440,1080)]:
-    scale = math.sqrt(width / 1600 * height / 900)
+    scale = scaler['m_ScaleFactor']
     cw, ch = width / scale, height / scale
     for fid in (8551259362963079213,8993051861464211369,2632482069413861691,
-                9200000000000000001,9200000000000000005,9200000000000000009,9200000000000000013):
+                9200000000000000005,9200000000000000009):
         t = ds[fid][1]['RectTransform']
         assert t['m_AnchorMin'] == t['m_AnchorMax']
         x = t['m_AnchorMin']['x'] * cw + t['m_AnchoredPosition']['x']

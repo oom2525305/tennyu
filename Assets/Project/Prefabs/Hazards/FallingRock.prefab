@@ -71,7 +71,6 @@ MonoBehaviour:
   warningSound: {fileID: 9100000000000000002}
   warningSoundLeadTime: 2
   powerReceiver: {fileID: 9200000000000000303}
-  windDisplacement: 0.2
 --- !u!1 &6579684541511953325
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +936,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::DivinePowerReceiver2D
   influence:
-    wind: 1
+    wind: 0
     thunder: 1
     rain: 0.5
     ghost: 0
