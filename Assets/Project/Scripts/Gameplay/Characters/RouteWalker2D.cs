@@ -56,6 +56,8 @@ namespace Tenyu.Gameplay
         [SerializeField, Min(0.1f)]
         private float maxWindSpeed = 8f;
 
+        [SerializeField] private bool advanceWaypointsWhenPushed;
+
         [SerializeField, Min(0f)]
         private float windDeceleration = 7f;
 
@@ -327,6 +329,21 @@ namespace Tenyu.Gameplay
             // 風は指定方向へ押す。通常移動に戻るときに再探索する。
             next += windVelocity * dt;
             next = ClampMovement(next, out bool blocked);
+            // Forward wind may cross an intermediate waypoint. Do not walk back to it.
+            if (advanceWaypointsWhenPushed && ghost == null && windVelocity.sqrMagnitude > 0.001f)
+            {
+                while (nextWaypointIndex > 0 && nextWaypointIndex < waypoints.Length - 1)
+                {
+                    Transform point = waypoints[nextWaypointIndex];
+                    Transform previous = waypoints[nextWaypointIndex - 1];
+                    if (point == null || previous == null || pathfinder == null) break;
+                    Vector2 forward = point.position - previous.position;
+                    if (Vector2.Dot(next - (Vector2)point.position, forward) < 0f ||
+                        !pathfinder.CanTravel(rb, next, point.position, obstacleLayers, obstacleSkin)) break;
+                    AdvanceWaypoint();
+                    ClearPath();
+                }
+            }
             rb.MovePosition(next);
             windVelocity = Vector2.MoveTowards(
                 windVelocity, Vector2.zero, windDeceleration * dt);

@@ -157,3 +157,34 @@ for width, height in [(1280,720),(1920,1080),(2560,1080),(1440,1080)]:
         assert 0 <= y - sh / 2 <= y + sh / 2 <= ch, (width,height,fid,'vertical bounds')
 print('PASS Japanese font glyphs and HUD bounds at 16:9, 21:9 and 4:3')
 print('Static validation only. Unity import, physics, input, rendering and audio still require Play Mode checks.')
+
+# Assassin wiring: a separate ability target, never a ProtectedTarget / goal activator.
+assassin = ds[9200000000000000022][1]['MonoBehaviour']
+assert assassin['target']['fileID'] == 5326484789955831212
+assert assassin['stageDirector']['fileID'] == 5118225735906958598
+assert assassin['pathfinder']['fileID'] == 5631471843832230023
+assert ds[9200000000000000016][1]['GameObject']['m_Layer'] == 6
+assert ds[9200000000000000018][1]['Rigidbody2D']['m_BodyType'] == 1
+assert ds[9200000000000000020][1]['MonoBehaviour']['routeWalker']['fileID'] == 0
+assert ds[9200000000000000027][1]['AudioSource']['m_PlayOnAwake'] == 0
+assert ds[5118225735906958598][1]['MonoBehaviour']['clearOnTimeout'] == 0
+assert inherited(1085920508231766334, 'advanceWaypointsWhenPushed', 0) == 1
+speed = inherited(1085920508231766334, 'moveSpeed', 2)
+assert speed < assassin['moveSpeed']
+# A stationary windup can hit a normally walking target, but leaves reaction time.
+assert assassin['warningDuration'] >= 1
+assert assassin['attackDistance'] + speed * assassin['warningDuration'] < assassin['strikeReach']
+spawn = ds[9200000000000000017][1]['Transform']['m_LocalPosition']
+spawn = (spawn['x'], spawn['y'])
+assert clear(spawn, route[0])
+assert math.dist(spawn, route[0]) > assassin['attackDistance'] * 0.8
+for key in ('visual', 'attackIndicator', 'statusText', 'warningSource'):
+    assert assassin[key]['fileID'] in ds
+for ancestor in (3457423461418282553, 4292794898146203553):
+    transform = ds[ancestor][1]['Transform']
+    assert transform['m_LocalPosition'] == dict(x=0, y=0, z=0)
+    assert transform['m_LocalScale'] == dict(x=1, y=1, z=1)
+source = (ROOT/'Assets/Project/Scripts/Gameplay/Characters/AssassinChaser2D.cs').read_text()
+for label in re.findall(r'SetStatus\("([^"\n]+)"\)', source):
+    assert all(c.isspace() or ord(c) in glyphs for c in label), ('missing glyph', label)
+print('PASS assassin spawn clearance, references, phase policy, warning tuning and dynamic text glyphs')

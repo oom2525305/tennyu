@@ -19,6 +19,8 @@ namespace Tenyu.Gameplay
         [SerializeField, Min(1f)]
         private float stageDuration = 45f;
 
+        [SerializeField] private bool clearOnTimeout = true;
+
         [Header("能力ドラッグ中")]
         [SerializeField, Range(0.05f, 1f)]
         private float aimingTimeScale = 0.2f;
@@ -56,7 +58,10 @@ namespace Tenyu.Gameplay
             TimeChanged?.Invoke(RemainingTime);
 
             if (RemainingTime <= 0f)
-                ClearStage();
+            {
+                if (clearOnTimeout) ClearStage();
+                else FailStage("時間切れ：門まで信長を逃がせませんでした");
+            }
         }
 
         // 観察画面の「タップで時を動かす」から呼ぶ
