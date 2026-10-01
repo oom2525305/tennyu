@@ -33,7 +33,7 @@
 
 ## Unityで実行する回帰テスト（追加済み・未実行）
 
-`Assets/Project/Tests/PlayMode/GameplayRegressionTests.cs` に8件を追加しました。既存コードをasmdefへ移動せず、テスト側から実コンポーネントを参照します。
+`Assets/Project/Tests/PlayMode/GameplayRegressionTests.cs` に9件を追加しました。既存コードをasmdefへ移動せず、テスト側から実コンポーネントを参照します。
 
 Unityの **Window → General → Test Runner → PlayMode → Run All** で実行してください。
 
@@ -45,6 +45,7 @@ Unityの **Window → General → Test Runner → PlayMode → Run All** で実�
 6. 観察中にゴールでクリアしない。
 7. 落石への雷・風・リトライで状態と着地点が正しく変わる。
 8. 雨で消火し、濡れた柵は乾くまで雷で燃えない。
+9. 角の直前で次の区間へ飛ばず、壁を避けて角まで進む。
 
 ## 手動確認
 

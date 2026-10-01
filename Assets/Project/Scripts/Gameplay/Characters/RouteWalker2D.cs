@@ -39,6 +39,9 @@ namespace Tenyu.Gameplay
         [SerializeField] private bool showPlannedPath = true;
         [Tooltip("現在位置から最後の経由地点へ直接探索。風と障害物で進路が変わるステージ用。")]
         [SerializeField] private bool navigateDirectlyToGoal;
+        [Tooltip("経路計画時だけ加える壁との余裕。実際の移動判定はObstacle Skinを使用。")]
+        [SerializeField, Min(0f)] private float pathClearance;
+        private float PathSkin => obstacleSkin + pathClearance;
 
         private readonly List<Vector2> plannedPath = new List<Vector2>();
         private int pathIndex;
@@ -217,7 +220,7 @@ namespace Tenyu.Gameplay
                 Vector2 from = current;
                 for (int i = pathIndex; i < plannedPath.Count; i++)
                 {
-                    if (!pathfinder.CanTravel(rb, from, plannedPath[i], obstacleLayers, obstacleSkin))
+                    if (!pathfinder.CanTravel(rb, from, plannedPath[i], obstacleLayers, PathSkin))
                     {
                         blocked = true;
                         break;
@@ -228,8 +231,9 @@ namespace Tenyu.Gameplay
             }
 
             // Validate the whole route cheaply. Rebuild only when a target/path actually changes.
-            if (changed || (inspectRoute && (plannedPath.Count == 0 || blocked)))            {
-                pathfinder.TryFindPath(rb, goal, obstacleLayers, obstacleSkin, plannedPath);
+            if (changed || (inspectRoute && (plannedPath.Count == 0 || blocked)))
+            {
+                pathfinder.TryFindPath(rb, goal, obstacleLayers, PathSkin, plannedPath);
                 pathIndex = 0;
                 pathTarget = target;
                 lastPathGoal = goal;
@@ -240,24 +244,15 @@ namespace Tenyu.Gameplay
             if (plannedPath.Count == 0)
                 return current;
 
-            // 直線で到達できる先の点まで省略。角の曲がり過ぎを減らす。
-            int furthest = Mathf.Min(plannedPath.Count - 1, pathIndex + 8);
-            for (int i = furthest; i > pathIndex; i--)
-            {
-                if (pathfinder.CanTravel(rb, current, plannedPath[i],
-                    obstacleLayers, obstacleSkin))
-                {
-                    pathIndex = i;
-                    break;
-                }
-            }
-
+            // A smoothed corner can only be skipped if the next segment clears the body.
+            // Proximity alone used to cut into the corner, stop, and restart A* every interval.
             while (pathIndex < plannedPath.Count - 1 &&
-                Vector2.Distance(current, plannedPath[pathIndex]) <= 0.025f)
+                Vector2.Distance(current, plannedPath[pathIndex]) <= 0.025f &&
+                pathfinder.CanTravel(rb, current, plannedPath[pathIndex + 1], obstacleLayers, PathSkin))
                 pathIndex++;
 
             Vector2 nextPoint = plannedPath[pathIndex];
-            if (!pathfinder.CanTravel(rb, current, nextPoint, obstacleLayers, obstacleSkin))
+            if (!pathfinder.CanTravel(rb, current, nextPoint, obstacleLayers, PathSkin))
                 return current; // 道が塞がれた。次の定期再探索まで待つ。
 
             Vector2 delta = nextPoint - current;
@@ -581,6 +576,17 @@ namespace Tenyu.Gameplay
             if (waypoints == null ||
                 waypoints.Length == 0)
             {
+                return;
+            }
+
+            if (navigateDirectlyToGoal)
+            {
+                // The old red waypoint polyline was not the route this mode actually follows.
+                Gizmos.color = Color.cyan;
+                if (waypoints[0] != null) Gizmos.DrawWireSphere(waypoints[0].position, 0.2f);
+                Gizmos.color = Color.yellow;
+                if (waypoints[waypoints.Length - 1] != null)
+                    Gizmos.DrawWireSphere(waypoints[waypoints.Length - 1].position, 0.3f);
                 return;
             }
 

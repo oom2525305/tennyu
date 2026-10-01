@@ -127,6 +127,31 @@ public sealed class GameplayRegressionTests
         Assert.That(body.position, Is.EqualTo(Vector2.zero));
         Assert.That((Vector2)Get(walker, "windVelocity"), Is.EqualTo(Vector2.zero));
     }
+    [Test] public void NearCornerDoesNotSkipIntoAnObstructedNextSegment()
+    {
+        var go = Make("Walker", false);
+        var body = go.AddComponent<Rigidbody2D>(); body.bodyType = RigidbodyType2D.Kinematic;
+        body.position = new Vector2(-0.01f, 0f);
+        go.AddComponent<CircleCollider2D>().radius = 0.4f;
+        var walker = go.AddComponent(TypeOf("Tenyu.Gameplay.RouteWalker2D"));
+        var finder = Make("Pathfinder").AddComponent(TypeOf("Tenyu.Gameplay.GridPathfinder2D"));
+        Set(walker, "pathfinder", finder);
+        var goal = Make("Goal").transform; goal.position = new Vector3(0.01f, 2f, 0f);
+        go.SetActive(true);
+        Wall(new Vector2(-0.9f, 1f), new Vector2(1f, 1f));
+        Physics2D.SyncTransforms();
+        Vector2 corner = new Vector2(0.01f, 0f);
+        Assert.That((bool)Call(finder, "CanTravel", body, body.position, corner, (LayerMask)128, 0.02f), Is.True);
+        Assert.That((bool)Call(finder, "CanTravel", body, body.position, (Vector2)goal.position, (LayerMask)128, 0.02f), Is.False);
+        Set(walker, "obstacleLayers", (LayerMask)128);
+        Set(walker, "pathRequested", true); Set(walker, "pathTarget", goal);
+        Set(walker, "lastPathGoal", (Vector2)goal.position); Set(walker, "repathTimer", 1f);
+        ((List<Vector2>)Get(walker, "plannedPath")).AddRange(new[] { corner, (Vector2)goal.position });
+        Vector2 next = (Vector2)Call(walker, "FollowPath", goal, 0f, 0.02f);
+        Assert.That(next.x, Is.EqualTo(corner.x).Within(0.001f));
+        Assert.That(next.y, Is.EqualTo(0f).Within(0.001f));
+        Assert.That((int)Get(walker, "pathIndex"), Is.EqualTo(0));
+    }
     [Test] public void GoalDoesNotClearDuringObservation()
     {
         var director = Director();

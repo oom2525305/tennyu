@@ -172,13 +172,9 @@ namespace Tenyu.Gameplay
                 repath = 0.6f;
             }
             if (path.Count == 0) return current;
-            for (int i = Mathf.Min(path.Count - 1, pathIndex + 8); i > pathIndex; i--)
-            {
-                if (!pathfinder.CanTravel(body, current, path[i], obstacleLayers, Skin)) continue;
-                pathIndex = i;
-                break;
-            }
-            while (pathIndex < path.Count - 1 && Vector2.Distance(current, path[pathIndex]) < 0.02f)
+            while (pathIndex < path.Count - 1 &&
+                Vector2.Distance(current, path[pathIndex]) < 0.02f &&
+                pathfinder.CanTravel(body, current, path[pathIndex + 1], obstacleLayers, Skin))
                 pathIndex++;
             Vector2 delta = path[pathIndex] - current;
             float allowed = Mathf.Max(0f, delta.magnitude - (pathIndex == path.Count - 1 ? stopDistance : 0f));

@@ -43,7 +43,7 @@ print('PASS movable blocker sweep and wind access to upper junction')
 W,H=16.72,9.41;nx,ny=112,63
 coords=[(-W/2+(x+.5)*W/nx,-H/2+(y+.5)*H/ny) for y in range(ny) for x in range(nx)]
 def find(start,goal,obs):
- start,goal=w(start),w(goal);r=.42
+ start,goal=w(start),w(goal);r=.47
  free={i for i,p in enumerate(coords) if obs.distance(Point(p))>=r}
  def clear(a,b):return obs.distance(LineString([a,b]))>=r
  def near(p):
@@ -68,12 +68,12 @@ def find(start,goal,obs):
    cost[j]=c;parents[j]=i;heapq.heappush(q,(c+math.dist(coords[j],goal),j))
  return None,None
 for name,start,gate,barrier in [('initial',(210,350),True,park),('open gate',(210,350),False,park),('wind into upper',(645,275),False,park),('block main',(210,350),False,closed),('both closed',(210,350),True,closed)]:
- obs=unary_union([walls,block(barrier)]+([fence] if gate else []));path,length=find(start,(1560,385),obs)
+ obs=unary_union([walls,block(barrier)]+([fence] if gate else []));path,length=find(start,(1416,100),obs)
  upper=path is not None and any(-1 < x < 3 and y > 2 for x,y in path)
  if name=='both closed':assert path is None
  else:
   assert path is not None, name
-  assert upper == (name in ('wind into upper','block main')),name
+  assert upper == (name in ('open gate','wind into upper','block main')),name
  print('PASS',name,'length',round(length,2) if length else None,'upper',upper)
 
 controller=next(b for b in d.values() if b.get('m_EditorClassIdentifier','').endswith('BurningTownRoute2D'))
@@ -100,3 +100,18 @@ assert all(c.isspace() or ord(c) in glyphs for label in labels for c in label)
 assert d[5118225735906958598]['clearOnTimeout']==0
 print('PASS goal navigation, independent roadblock layers, user sprite reference, dynamic HUD glyphs')
 print('Static geometry only. Unity compilation, actual wind/physics/input/audio still require Play Mode testing.')
+
+assert d[9108794123129803236]['m_LocalPosition'] == dict(x=5.8,y=3.705,z=0)
+mods=d[3060080178138198873]['m_Modification']['m_Modifications']
+for axis,value in [('x',5.8),('y',3.705)]:
+    assert any(m['propertyPath']=='m_LocalPosition.'+axis and float(m['value'])==value for m in mods)
+print('PASS destination and goal trigger both match the red-circle location')
+
+# Geometric reproduction of the former early-corner skip (the Unity test executes the real follower).
+corner_wall=box(-1.4,.5,-.4,1.5)
+current,corner,following=(-.01,0),(.01,0),(.01,2)
+assert math.dist(current,corner)<.025
+assert corner_wall.distance(LineString([current,following]))<.4
+assert corner_wall.distance(LineString([current,corner]))>.4
+assert corner_wall.distance(LineString([corner,following]))>.4
+print('PASS near-corner reproduction: direct skip collides, reaching the corner first clears')
