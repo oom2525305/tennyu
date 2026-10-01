@@ -286,7 +286,7 @@ namespace Tenyu.Gameplay
             windWasActive = windDriving;
 
             GhostLure2D ghost = affectedByGhost && !HasFinishedRoute && !hasFallen
-                ? GhostLure2D.FindFor(stageDirector, current) : null;
+                ? GhostLure2D.FindReachableFor(stageDirector, rb, pathfinder, obstacleLayers, PathSkin) : null;
 
             // The automatic walker must not pull against the player's wind.
             if (!windDriving && ghost != null)

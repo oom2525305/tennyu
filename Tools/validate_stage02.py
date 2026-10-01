@@ -193,3 +193,19 @@ print('PASS assassin spawn clearance, references, phase policy, warning tuning a
 
 assert ds[9200000000000000020][1]['MonoBehaviour']['influence']['ghost'] > 0
 print('PASS assassin ghost influence enabled')
+
+# Check each branch end and the entire corridor, not only convenient lure points.
+side_roads = [
+    [(648,496),(520,431),(423,363),(360,295),(350,247),(386,200),(471,144),(583,105),(700,80)],
+    [(855,509),(1020,577),(1170,637),(1350,687),(1575,720)],
+]
+for road in side_roads:
+    points = [((x-836)/100,(470.5-y)/100) for x,y in road]
+    assert obstacles.distance(LineString(points)) >= .6
+    assert reach(route[3], points[-1]) and reach(points[-1], route[4])
+hard = docs(ROOT/'Assets/Project/Prefabs/Stage/Stage_02_Hard.prefab')
+for fid in (5751537408444854577,8849112982539888620):
+    assert hard[fid][1]['PolygonCollider2D']['m_Points']==ds[fid][1]['PolygonCollider2D']['m_Points']
+assert power['ghostPlacementClearance'] >= radius
+assert power['ghostObstacleLayers']['m_Bits'] == 128
+print('PASS full upper/lower corridors and both ends; identical normal/hard walls and ghost placement clearance')

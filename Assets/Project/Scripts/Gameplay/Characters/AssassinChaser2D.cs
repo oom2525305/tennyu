@@ -96,7 +96,7 @@ namespace Tenyu.Gameplay
             float dt = StageTime.FixedDeltaTime;
             Vector2 next = body.position;
             GhostLure2D ghost = receiver.CanReceive(DivinePowerType.Ghost)
-                ? GhostLure2D.FindFor(stageDirector, body.position) : null;
+                ? GhostLure2D.FindReachableFor(stageDirector, body, pathfinder, obstacleLayers, Skin) : null;
             if (delay > 0f)
             {
                 delay = Mathf.Max(0f, delay - dt);

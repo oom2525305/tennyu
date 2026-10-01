@@ -14,6 +14,7 @@ namespace Tenyu.Gameplay
         [SerializeField, Range(100, 20000)] private int maximumCells = 10000;
 
         private readonly List<RaycastHit2D> hits = new List<RaycastHit2D>(16);
+        private readonly List<Collider2D> overlaps = new List<Collider2D>();
         private readonly SortedSet<OpenNode> open = new SortedSet<OpenNode>();
         private float[] costs;
         private int[] parents;
@@ -41,6 +42,24 @@ namespace Tenyu.Gameplay
                    Mathf.Abs(relative.y) <= areaSize.y * 0.5f;
         }
 
+        // Check the whole body at a destination, including zero-length requests.
+        public bool CanStandAt(Rigidbody2D body, Vector2 position, LayerMask obstacleLayers, float skin)
+        {
+            if (body == null || !Contains(position)) return false;
+            Collider2D shape = body.GetComponent<Collider2D>();
+            if (shape == null || !shape.enabled) return false;
+            Vector2 center = position + (Vector2)shape.bounds.center - body.position;
+            Vector2 extents = shape.bounds.extents;
+            float radius = (shape is CircleCollider2D ? Mathf.Max(extents.x, extents.y) : extents.magnitude)
+                + Mathf.Max(0f, skin);
+            if (!Contains(center - Vector2.one * radius) || !Contains(center + Vector2.one * radius)) return false;
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.SetLayerMask(obstacleLayers);
+            filter.useTriggers = false;
+            overlaps.Clear();
+            return Physics2D.OverlapCircle(center, radius, filter, overlaps) == 0;
+        }
+
         public bool CanTravel(Rigidbody2D body, Vector2 from, Vector2 to,
             LayerMask obstacleLayers, float skin)
         {
@@ -50,7 +69,7 @@ namespace Tenyu.Gameplay
             Vector2 delta = to - from;
             float distance = delta.magnitude;
             if (distance <= 0.000001f)
-                return true;
+                return CanStandAt(body, to, obstacleLayers, skin);
 
             Vector2 direction = delta / distance;
             ContactFilter2D filter = new ContactFilter2D();
@@ -76,7 +95,7 @@ namespace Tenyu.Gameplay
         {
             result.Clear();
             if (body == null || !isActiveAndEnabled ||
-                !Contains(body.position) || !Contains(target))
+                !Contains(body.position) || !CanStandAt(body, target, obstacleLayers, skin))
                 return false;
 
             Vector2 start = body.position;

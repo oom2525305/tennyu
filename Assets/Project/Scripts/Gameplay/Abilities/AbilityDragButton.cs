@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -77,6 +78,32 @@ public class AbilityDragButton :
     private Vector2 lockedScreenPosition;
     private Vector2 lockedWorldPosition;
     private Vector2 selectedScreenDirection;
+
+    private readonly List<RectTransform> blockingUiRects = new List<RectTransform>();
+
+    private void Start()
+    {
+        CacheBlockingUi();
+    }
+
+    private void CacheBlockingUi()
+    {
+        blockingUiRects.Clear();
+        if (rootCanvas == null) return;
+        foreach (Selectable control in rootCanvas.GetComponentsInChildren<Selectable>(true))
+            AddBlockingUi(control.transform as RectTransform);
+        foreach (AbilityDragButton ability in rootCanvas.GetComponentsInChildren<AbilityDragButton>(true))
+        {
+            AddBlockingUi(ability.transform as RectTransform);
+            foreach (TMPro.TMP_Text label in ability.GetComponentsInChildren<TMPro.TMP_Text>(true))
+                AddBlockingUi(label.rectTransform);
+        }
+    }
+
+    private void AddBlockingUi(RectTransform rect)
+    {
+        if (rect != null && !blockingUiRects.Contains(rect)) blockingUiRects.Add(rect);
+    }
 
     private void Awake()
     {
@@ -478,13 +505,15 @@ public class AbilityDragButton :
             return false;
         }
 
-        return
-            RectTransformUtility
-                .RectangleContainsScreenPoint(
-                    worldCastArea,
-                    screenPosition,
-                    eventCamera
-                );
+        if (!RectTransformUtility.RectangleContainsScreenPoint(worldCastArea, screenPosition, eventCamera))
+            return false;
+        foreach (RectTransform rect in blockingUiRects)
+        {
+            if (rect != null && rect.gameObject.activeInHierarchy &&
+                RectTransformUtility.RectangleContainsScreenPoint(rect, screenPosition, eventCamera))
+                return false;
+        }
+        return true;
     }
 
     private void UpdateRangeIndicator(

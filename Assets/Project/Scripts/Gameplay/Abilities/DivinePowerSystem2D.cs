@@ -157,6 +157,9 @@ public class DivinePowerSystem2D : MonoBehaviour
     [SerializeField, Min(0f)] private float ghostCooldown = 5f;
     [SerializeField, Min(0.1f)] private float ghostDuration = 4f;
     [SerializeField, Min(0.1f)] private float ghostRadius = 3f;
+    [SerializeField] private LayerMask ghostObstacleLayers = 1 << 7;
+    [SerializeField, Min(0.01f)] private float ghostPlacementClearance = 0.45f;
+    private readonly List<Collider2D> ghostPlacementHits = new List<Collider2D>();
     private int remainingGhostUses;
     private float remainingGhostCooldown;
     private GhostLure2D activeGhost;
@@ -237,6 +240,12 @@ public class DivinePowerSystem2D : MonoBehaviour
 
         if (powerType == DivinePowerType.Ghost)
         {
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.SetLayerMask(ghostObstacleLayers);
+            filter.useTriggers = false;
+            ghostPlacementHits.Clear();
+            if (Physics2D.OverlapCircle(worldPosition, ghostPlacementClearance, filter, ghostPlacementHits) > 0)
+                return false; // Keep the previous ghost, charges and cooldown on an invalid drop.
             ClearGhost();
             activeGhost = Instantiate(ghostPrefab, worldPosition, Quaternion.identity);
             activeGhost.Initialize(stageDirector, ghostDuration, ghostRadius);

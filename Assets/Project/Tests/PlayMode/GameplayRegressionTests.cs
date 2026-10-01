@@ -263,6 +263,81 @@ public sealed class GameplayRegressionTests
         Assert.That(ghost.GetType().GetMethod("FindFor").Invoke(null, new object[] { director, body.position }), Is.Null);
     }
 
+    [TestCase(false)]
+    [TestCase(true)]
+    public void UnreachableGhostDoesNotStopWalkerOrAssassin(bool separatedByWall)
+    {
+        var director = Director();
+        var finder = Make("Grid").AddComponent(TypeOf("Tenyu.Gameplay.GridPathfinder2D"));
+        Set(finder, "areaSize", new Vector2(6f, 6f));
+        if (separatedByWall) Wall(Vector2.zero, new Vector2(0.3f, 8f));
+        else Wall(Vector2.right, Vector2.one);
+        var go = Make("Nobunaga", false); go.layer = 6;
+        var body = go.AddComponent<Rigidbody2D>(); body.bodyType = RigidbodyType2D.Kinematic;
+        body.position = Vector2.left;
+        go.AddComponent<CircleCollider2D>().radius = 0.4f;
+        var target = go.AddComponent(TypeOf("Tenyu.Gameplay.ProtectedTarget2D")); Set(target, "stageDirector", director);
+        var walker = go.AddComponent(TypeOf("Tenyu.Gameplay.RouteWalker2D"));
+        var start = Make("Start").transform; start.position = Vector3.left;
+        var goal = Make("Goal").transform; goal.position = new Vector3(-1f, 2f, 0f);
+        Set(walker, "stageDirector", director); Set(walker, "pathfinder", finder);
+        Set(walker, "waypoints", new[] { start, goal });
+        go.SetActive(true); Call(walker, "ResetWalker");
+        var ninjaGo = Make("Ninja", false); ninjaGo.layer = 6;
+        var ninjaBody = ninjaGo.AddComponent<Rigidbody2D>(); ninjaBody.bodyType = RigidbodyType2D.Kinematic;
+        ninjaBody.position = new Vector2(-1f, -1f); ninjaGo.AddComponent<CircleCollider2D>().radius = 0.32f;
+        ninjaGo.AddComponent(TypeOf("DivinePowerReceiver2D"));
+        var ninja = ninjaGo.AddComponent(TypeOf("Tenyu.Gameplay.AssassinChaser2D"));
+        Set(ninja, "stageDirector", director); Set(ninja, "target", target); Set(ninja, "pathfinder", finder);
+        Set(ninja, "obstacleLayers", (LayerMask)128); Set(ninja, "startDelay", 0f);
+        ninjaGo.SetActive(true); Call(ninja, "ResetChaser");
+        var ghostGo = Make("UnreachableGhost"); ghostGo.transform.position = Vector3.right;
+        var ghost = ghostGo.AddComponent(TypeOf("Tenyu.Gameplay.GhostLure2D"));
+        Call(ghost, "Initialize", director, 6f, 3f); Call(director, "BeginStage");
+        Physics2D.SyncTransforms();
+        Assert.That(ghost.GetType().GetMethod("FindReachableFor").Invoke(null,
+            new object[] { director, body, finder, (LayerMask)128, 0.02f }), Is.Null);
+        Call(walker, "MoveCharacter"); Call(ninja, "FixedUpdate"); Physics2D.Simulate(0.02f);
+        Assert.That(body.position.y, Is.GreaterThan(0f));
+        Assert.That(ninjaBody.position.y, Is.GreaterThan(-1f));
+    }
+
+    [Test] public void LowerRoadAcceptsPlacementButVisibleAbilityUiDoesNot()
+    {
+        var canvasGo = new GameObject("Canvas", typeof(RectTransform), typeof(Canvas)); objects.Add(canvasGo);
+        var canvas = canvasGo.GetComponent<Canvas>(); canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        var areaGo = new GameObject("WorldCastArea", typeof(RectTransform)); objects.Add(areaGo);
+        var area = areaGo.GetComponent<RectTransform>(); area.SetParent(canvas.transform, false);
+        area.anchorMin = Vector2.zero; area.anchorMax = Vector2.one; area.sizeDelta = Vector2.zero;
+        var buttonGo = new GameObject("Ability", typeof(RectTransform)); objects.Add(buttonGo);
+        var rect = buttonGo.GetComponent<RectTransform>(); rect.SetParent(canvas.transform, false);
+        rect.anchorMin = rect.anchorMax = Vector2.zero;
+        rect.anchoredPosition = new Vector2(70f, 100f); rect.sizeDelta = new Vector2(130f, 130f);
+        var button = buttonGo.AddComponent(TypeOf("AbilityDragButton"));
+        Set(button, "worldCastArea", area); Call(button, "CacheBlockingUi"); Canvas.ForceUpdateCanvases();
+        Assert.That(Call(button, "IsInsideWorldArea", new Vector2(Screen.width - 40f, 60f), null), Is.True);
+        Assert.That(Call(button, "IsInsideWorldArea", new Vector2(70f, 100f), null), Is.False);
+    }
+
+    [Test] public void InvalidGhostDropKeepsPreviousGhostUsesAndCooldown()
+    {
+        var director = Director();
+        var prefab = Make("GhostPrefab").AddComponent(TypeOf("Tenyu.Gameplay.GhostLure2D"));
+        var go = Make("Powers", false); var powers = go.AddComponent(TypeOf("DivinePowerSystem2D"));
+        Set(powers, "stageDirector", director); Set(powers, "ghostPrefab", prefab);
+        go.SetActive(true); Call(director, "BeginStage");
+        var type = Enum.Parse(TypeOf("DivinePowerType"), "Ghost");
+        Assert.That(Call(powers, "Cast", type, Vector2.left, Vector2.zero), Is.True);
+        var previous = (Component)Get(powers, "activeGhost"); objects.Add(previous.gameObject);
+        int uses = (int)Call(powers, "GetRemainingUses", type);
+        Set(powers, "remainingGhostCooldown", 0f);
+        Wall(Vector2.right, Vector2.one); Physics2D.SyncTransforms();
+        Assert.That(Call(powers, "Cast", type, Vector2.right, Vector2.zero), Is.False);
+        Assert.That(Get(powers, "activeGhost"), Is.SameAs(previous));
+        Assert.That((int)Call(powers, "GetRemainingUses", type), Is.EqualTo(uses));
+        Assert.That((float)Call(powers, "GetRemainingCooldown", type), Is.EqualTo(0f));
+    }
+
     [Test] public void ApproachRockWaitsForTargetAndCanBePreemptedWithThunder()
     {
         var director = Director(); var root = Make("ApproachRock", false);
