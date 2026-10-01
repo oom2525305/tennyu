@@ -34,6 +34,19 @@ namespace Tenyu.Audio
         private readonly Dictionary<DivinePowerType, int> counts =
             new Dictionary<DivinePowerType, int>();
 
+        // 共通UI Prefabはシーン参照を保存できないため、同じシーン内だけで解決する。
+        public static TenyuSceneAudio FindFor(Component owner)
+        {
+            foreach (TenyuSceneAudio candidate in
+                FindObjectsByType<TenyuSceneAudio>(FindObjectsSortMode.None))
+            {
+                if (candidate.gameObject.scene == owner.gameObject.scene &&
+                    candidate.isActiveAndEnabled)
+                    return candidate;
+            }
+            return null;
+        }
+
         private void Awake()
         {
             music = MakeSource(true);
@@ -75,6 +88,8 @@ namespace Tenyu.Audio
                 ? stageDirector.Phase : StagePhase.Observation;
             if (previousPhase != StagePhase.Cleared && previousPhase != StagePhase.Failed)
                 StartMusic();
+            if (previousPhase == StagePhase.Paused)
+                music.volume = bgmVolume * pausedBgmMultiplier;
         }
 
         private void SnapshotCounts()
@@ -88,7 +103,7 @@ namespace Tenyu.Audio
         private void StartMusic()
         {
             if (music == null) return;
-            music.clip = bgm;
+            if (music.clip != bgm) music.clip = bgm;
             music.volume = bgmVolume;
             if (bgm != null && !music.isPlaying) music.Play();
         }
@@ -116,12 +131,14 @@ namespace Tenyu.Audio
                 case StagePhase.Cleared:
                     music.Stop();
                     ability.Stop();
+                    ui.Stop();
                     PlayUI(clearSound);
                     break;
                 case StagePhase.Failed:
                     music.Stop();
                     // 雷・着地など失敗原因となった短い音は最後まで鳴らす。
                     ability.UnPause();
+                    ui.Stop();
                     PlayUI(failSound);
                     break;
             }

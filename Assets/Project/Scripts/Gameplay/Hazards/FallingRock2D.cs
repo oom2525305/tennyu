@@ -59,9 +59,17 @@ namespace Tenyu.Gameplay
         [SerializeField]
         private AudioSource impactSound;
 
+        [Header("落下直前の予告音（任意）")]
+        [SerializeField]
+        private AudioSource warningSound;
+
+        [SerializeField, Min(0f)]
+        private float warningSoundLeadTime = 2f;
+
         private RockState state;
         private float remainingWarningTime;
         private float fallElapsed;
+        private bool warningSoundPlayed;
 
         private Vector3 startPosition;
         private Vector3 targetPosition;
@@ -126,6 +134,13 @@ namespace Tenyu.Gameplay
 
             UpdateCountdownText();
 
+            if (!warningSoundPlayed && remainingWarningTime > 0f &&
+                remainingWarningTime <= warningSoundLeadTime)
+            {
+                warningSoundPlayed = true;
+                if (warningSound != null) warningSound.Play();
+            }
+
             if (remainingWarningTime <= 0f)
             {
                 BeginFall();
@@ -136,6 +151,7 @@ namespace Tenyu.Gameplay
         {
             state = RockState.Falling;
             fallElapsed = 0f;
+            if (warningSound != null) warningSound.Stop();
 
             if (warningMarker != null)
             {
@@ -265,6 +281,12 @@ namespace Tenyu.Gameplay
 
         public void ResetRock()
         {
+            // 参照が欠けていても、リトライ時に前回の音・着地エフェクトを残さない。
+            StopSounds();
+            warningSoundPlayed = false;
+            if (impactEffect != null)
+                impactEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
             if (impactPoint == null)
             {
                 return;
@@ -324,10 +346,17 @@ namespace Tenyu.Gameplay
 
         private void OnDisable()
         {
+            StopSounds();
             if (stageDirector != null)
             {
                 stageDirector.StageReset -= ResetRock;
             }
+        }
+
+        private void StopSounds()
+        {
+            if (warningSound != null) warningSound.Stop();
+            if (impactSound != null) impactSound.Stop();
         }
 
         private void OnDrawGizmosSelected()

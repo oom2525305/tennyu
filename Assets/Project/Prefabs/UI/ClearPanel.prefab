@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 8363692722371051731}
   - component: {fileID: 6537841506784357895}
   - component: {fileID: 5270513617875510544}
+  - component: {fileID: 9100000000000000000}
   m_Layer: 5
   m_Name: BackSelectButton
   m_TagString: Untagged
@@ -556,6 +557,7 @@ GameObject:
   - component: {fileID: 7389073107411570040}
   - component: {fileID: 6481648352986610103}
   - component: {fileID: 6409567880008427813}
+  - component: {fileID: 9100000000000000001}
   m_Layer: 5
   m_Name: ClearRetryButton
   m_TagString: Untagged
@@ -743,3 +745,29 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9100000000000000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5329489432178209859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d75a5c40da471e47a353763345a292a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuButtonSound
+  sceneAudio: {fileID: 0}
+--- !u!114 &9100000000000000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7093821997043355807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d75a5c40da471e47a353763345a292a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuButtonSound
+  sceneAudio: {fileID: 0}

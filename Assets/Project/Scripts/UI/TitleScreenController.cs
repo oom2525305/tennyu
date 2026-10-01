@@ -3,11 +3,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Tenyu.Audio;
 
 public class TitleScreenController : MonoBehaviour, IPointerClickHandler
 {
     [Header("次に開くシーン")]
     [SerializeField] private string nextSceneName = "TimelineScene";
+
+    [Header("音")]
+    [SerializeField] private TenyuSceneAudio sceneAudio;
 
     [Header("タップ案内")]
     [SerializeField] private CanvasGroup tapGuideGroup;
@@ -55,9 +59,11 @@ public class TitleScreenController : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isTransitioning)
+        if (isTransitioning || eventData.button != PointerEventData.InputButton.Left)
             return;
 
+        if (sceneAudio == null) sceneAudio = TenyuSceneAudio.FindFor(this);
+        if (sceneAudio != null) sceneAudio.PlayButtonSound();
         StartCoroutine(LoadNextScene());
     }
 

@@ -2288,6 +2288,7 @@ GameObject:
   - component: {fileID: 4554933856884108727}
   - component: {fileID: 2544124189576878255}
   - component: {fileID: 1481319602326254823}
+  - component: {fileID: 9100000000000000000}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -3834,3 +3835,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &9100000000000000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088836804988793711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d75a5c40da471e47a353763345a292a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuButtonSound
+  sceneAudio: {fileID: 8231655421882145717}

@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 3164468236307692686}
   - component: {fileID: 5377574210937462514}
   - component: {fileID: 3220150555087177930}
+  - component: {fileID: 9100000000000000000}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -1926,6 +1927,7 @@ GameObject:
   - component: {fileID: 7701551626204013817}
   - component: {fileID: 13610321223224341}
   - component: {fileID: 4038019203495807430}
+  - component: {fileID: 9100000000000000001}
   m_Layer: 5
   m_Name: BackSelectButton
   m_TagString: Untagged
@@ -2787,6 +2789,7 @@ GameObject:
   - component: {fileID: 7139896644626920983}
   - component: {fileID: 8414746936647800297}
   - component: {fileID: 2514845526703587819}
+  - component: {fileID: 9100000000000000002}
   m_Layer: 5
   m_Name: PauseRetryButton
   m_TagString: Untagged
@@ -3404,6 +3407,7 @@ GameObject:
   - component: {fileID: 6238526664776559177}
   - component: {fileID: 7632335764535418502}
   - component: {fileID: 7560325663090036244}
+  - component: {fileID: 9100000000000000003}
   m_Layer: 5
   m_Name: ClearRetryButton
   m_TagString: Untagged
@@ -3952,6 +3956,7 @@ GameObject:
   - component: {fileID: 8955233462261653535}
   - component: {fileID: 2019165018859372746}
   - component: {fileID: 4290006644411218406}
+  - component: {fileID: 9100000000000000004}
   m_Layer: 5
   m_Name: BackSelectButton
   m_TagString: Untagged
@@ -4085,6 +4090,7 @@ GameObject:
   - component: {fileID: 7607191348509307403}
   - component: {fileID: 3770310700145975023}
   - component: {fileID: 7999822064658081289}
+  - component: {fileID: 9100000000000000005}
   m_Layer: 5
   m_Name: FailedRetryButton
   m_TagString: Untagged
@@ -4865,6 +4871,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6556249161831613315}
   - {fileID: 2192484399554013309}
   - {fileID: 957669960763084023}
   - {fileID: 2813321138474523404}
@@ -4883,6 +4890,7 @@ GameObject:
   - component: {fileID: 4902517918716520418}
   - component: {fileID: 7684236161438976310}
   - component: {fileID: 8735945421273399841}
+  - component: {fileID: 9100000000000000006}
   m_Layer: 5
   m_Name: BackSelectButton
   m_TagString: Untagged
@@ -5153,6 +5161,7 @@ GameObject:
   - component: {fileID: 4554933856884108727}
   - component: {fileID: 2544124189576878255}
   - component: {fileID: 1481319602326254823}
+  - component: {fileID: 9100000000000000007}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -6206,3 +6215,164 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4653572819210367331, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
   m_PrefabInstance: {fileID: 8780737418283595953}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7636630054767130467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6556249161831613315}
+  - component: {fileID: 8231655421882145717}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6556249161831613315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7636630054767130467}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 464.61285, y: 269.87555, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8171833031351144382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8231655421882145717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7636630054767130467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28e1d1cac912224782e1d702b5294f8, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuSceneAudio
+  stageDirector: {fileID: 5118225735906958598}
+  powerSystem: {fileID: 6622081547540006974}
+  bgm: {fileID: 8300000, guid: e4b4dfb1c3fab7d47b4ffbab974d1bf8, type: 3}
+  bgmVolume: 0.218
+  pausedBgmMultiplier: 0.4
+  buttonSound: {fileID: 8300000, guid: 26aca67bdb096504e8f332e40307999f, type: 3}
+  beginSound: {fileID: 8300000, guid: d326e097b042f05499bcad02be61ba8b, type: 3}
+  clearSound: {fileID: 8300000, guid: f0937029f7e33c54fb0db767695abc94, type: 3}
+  failSound: {fileID: 8300000, guid: 776999e029bce454db458bd7bdc2ce4e, type: 3}
+  windSound: {fileID: 8300000, guid: e13b356e1bc8bfa409b5a3089febf551, type: 3}
+  thunderSound: {fileID: 8300000, guid: 0a64b15b25942da498106ad075138478, type: 3}
+  ghostSound: {fileID: 0}
+  seVolume: 0.7
+--- !u!114 &9100000000000000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316992678471922648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d75a5c40da471e47a353763345a292a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuButtonSound
+  sceneAudio: {fileID: 8231655421882145717}
+--- !u!114 &9100000000000000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010699648992666034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d75a5c40da471e47a353763345a292a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuButtonSound
+  sceneAudio: {fileID: 8231655421882145717}
+--- !u!114 &9100000000000000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967874709580884893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d75a5c40da471e47a353763345a292a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuButtonSound
+  sceneAudio: {fileID: 8231655421882145717}
+--- !u!114 &9100000000000000003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5938736770915547054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d75a5c40da471e47a353763345a292a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuButtonSound
+  sceneAudio: {fileID: 8231655421882145717}
+--- !u!114 &9100000000000000004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6711807576287176651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d75a5c40da471e47a353763345a292a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuButtonSound
+  sceneAudio: {fileID: 8231655421882145717}
+--- !u!114 &9100000000000000005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6987497994622644459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d75a5c40da471e47a353763345a292a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuButtonSound
+  sceneAudio: {fileID: 8231655421882145717}
+--- !u!114 &9100000000000000006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786195508483429234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d75a5c40da471e47a353763345a292a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuButtonSound
+  sceneAudio: {fileID: 8231655421882145717}
+--- !u!114 &9100000000000000007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9088836804988793711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d75a5c40da471e47a353763345a292a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuButtonSound
+  sceneAudio: {fileID: 8231655421882145717}

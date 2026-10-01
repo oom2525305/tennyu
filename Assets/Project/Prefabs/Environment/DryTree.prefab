@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5128759531460708511}
   - component: {fileID: 3677933149393873797}
+  - component: {fileID: 9100000000000000000}
   m_Layer: 0
   m_Name: FireVisual
   m_TagString: Untagged
@@ -10165,3 +10166,20 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &9100000000000000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17196646532201630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844e14ec66460424db437542bdcf4811, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuEffectLoopSound
+  stageDirector: {fileID: 0}
+  loopClip: {fileID: 0}
+  volume: 0.3
+  watchedParticles: {fileID: 0}
+  watchedRenderer: {fileID: 3677933149393873797}

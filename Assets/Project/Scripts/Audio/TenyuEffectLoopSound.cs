@@ -12,6 +12,8 @@ namespace Tenyu.Audio
         [SerializeField, Range(0f, 1f)] private float volume = 0.3f;
         [Tooltip("ParticleSystem.Stopで消えるエフェクトは、そのParticleSystemを設定")]
         [SerializeField] private ParticleSystem watchedParticles;
+        [Tooltip("SpriteRenderer.enabledだけで非表示にする炎などに設定。画面外でも音は継続します")]
+        [SerializeField] private Renderer watchedRenderer;
         private AudioSource source;
         private bool paused;
 
@@ -46,9 +48,22 @@ namespace Tenyu.Audio
         private void LateUpdate()
         {
             if (stageDirector == null || loopClip == null) { StopSound(); return; }
-            if (stageDirector.Phase == StagePhase.Paused) return;
-            bool visible = watchedParticles == null || watchedParticles.isPlaying;
-            if (stageDirector.Phase != StagePhase.Playing || !visible)
+            bool visible = (watchedRenderer == null ||
+                (watchedRenderer.enabled && watchedRenderer.gameObject.activeInHierarchy)) &&
+                (watchedParticles == null ||
+                (watchedParticles.gameObject.activeInHierarchy &&
+                 (watchedParticles.isPlaying || watchedParticles.isPaused)));
+            if (!visible)
+            {
+                StopSound();
+                return;
+            }
+            if (stageDirector.Phase == StagePhase.Paused)
+            {
+                OnPhase(StagePhase.Paused);
+                return;
+            }
+            if (stageDirector.Phase != StagePhase.Playing)
             {
                 StopSound();
                 return;

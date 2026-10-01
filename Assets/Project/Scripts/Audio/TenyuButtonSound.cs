@@ -5,6 +5,7 @@ using UnityEngine.UI;
 namespace Tenyu.Audio
 {
     [RequireComponent(typeof(Button))]
+    [DisallowMultipleComponent]
     public sealed class TenyuButtonSound : MonoBehaviour, IPointerDownHandler, ISubmitHandler
     {
         [SerializeField] private TenyuSceneAudio sceneAudio;
@@ -12,7 +13,10 @@ namespace Tenyu.Audio
         private void Awake() { button = GetComponent<Button>(); }
         private void Play()
         {
-            if (button.IsActive() && button.IsInteractable() && sceneAudio != null)
+            if (!isActiveAndEnabled || !button.IsActive() || !button.IsInteractable())
+                return;
+            if (sceneAudio == null) sceneAudio = TenyuSceneAudio.FindFor(this);
+            if (sceneAudio != null)
                 sceneAudio.PlayButtonSound();
         }
         public void OnPointerDown(PointerEventData data)

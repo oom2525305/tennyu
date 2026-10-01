@@ -686,6 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleScreenController
   nextSceneName: TimelineScene
+  sceneAudio: {fileID: 163980165}
   tapGuideGroup: {fileID: 1332263671}
   pulseSpeed: 2.5
   minimumAlpha: 0.35
