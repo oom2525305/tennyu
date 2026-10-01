@@ -37,6 +37,8 @@ namespace Tenyu.Gameplay
         [SerializeField] private GridPathfinder2D pathfinder;
         [SerializeField, Min(0.1f)] private float repathInterval = 0.5f;
         [SerializeField] private bool showPlannedPath = true;
+        [Tooltip("現在位置から最後の経由地点へ直接探索。風と障害物で進路が変わるステージ用。")]
+        [SerializeField] private bool navigateDirectlyToGoal;
 
         private readonly List<Vector2> plannedPath = new List<Vector2>();
         private int pathIndex;
@@ -428,7 +430,7 @@ namespace Tenyu.Gameplay
         {
             if (route == null || route.Length == 0) return;
             waypoints = route;
-            nextWaypointIndex = 0;
+            nextWaypointIndex = navigateDirectlyToGoal ? route.Length - 1 : 0;
             HasFinishedRoute = false;
             ClearPath();
         }
@@ -456,7 +458,7 @@ namespace Tenyu.Gameplay
                 rb.position =
                     waypoints[0].position;
 
-                nextWaypointIndex = 1;
+                nextWaypointIndex = navigateDirectlyToGoal ? waypoints.Length - 1 : 1;
             }
             else
             {
