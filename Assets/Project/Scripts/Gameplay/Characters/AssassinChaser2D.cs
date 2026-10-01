@@ -154,13 +154,22 @@ namespace Tenyu.Gameplay
         private Vector2 Follow(Transform destination, float stopDistance, float dt)
         {
             Vector2 current = body.position;
+            // Chase the current target directly when visible, without rebuilding the grid.
+            if (pathfinder.CanTravel(body, current, destination.position, obstacleLayers, Skin))
+            {
+                Vector2 offset = (Vector2)destination.position - current;
+                if (visual != null && Mathf.Abs(offset.x) > 0.01f) visual.flipX = offset.x < 0f;
+                pathTarget = null;
+                return current + offset.normalized * Mathf.Min(moveSpeed * dt,
+                    Mathf.Max(0f, offset.magnitude - stopDistance));
+            }
             repath -= dt;
             if (pathTarget != destination || repath <= 0f)
             {
                 pathfinder.TryFindPath(body, destination.position, obstacleLayers, Skin, path);
                 pathTarget = destination;
                 pathIndex = 0;
-                repath = 0.25f;
+                repath = 0.6f;
             }
             if (path.Count == 0) return current;
             for (int i = Mathf.Min(path.Count - 1, pathIndex + 8); i > pathIndex; i--)
@@ -179,19 +188,7 @@ namespace Tenyu.Gameplay
 
         private Vector2 ClampMovement(Vector2 desired)
         {
-            Vector2 movement = desired - body.position;
-            float distance = movement.magnitude;
-            if (distance < 0.000001f) return body.position;
-            Vector2 direction = movement / distance;
-            ContactFilter2D filter = new ContactFilter2D();
-            filter.SetLayerMask(obstacleLayers);
-            filter.useTriggers = false;
-            hits.Clear();
-            body.Cast(direction, filter, hits, distance + Skin);
-            foreach (RaycastHit2D hit in hits)
-                if (hit.collider != null && Vector2.Dot(direction, hit.normal) < -0.0001f)
-                    distance = Mathf.Min(distance, Mathf.Max(0f, hit.distance - Skin));
-            return body.position + direction * distance;
+            return KinematicMotion2D.Resolve(body, desired - body.position, obstacleLayers, Skin, hits);
         }
 
         private void ReceiveWind(Vector2 direction, float impulse)

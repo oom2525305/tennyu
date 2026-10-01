@@ -40,7 +40,7 @@ public class AbilityDragButton :
     private float stationaryRadius = 18f;
 
     [SerializeField, Min(1f)]
-    private float directionThreshold = 55f;
+    private float directionThreshold = 35f;
 
     [Header("ドラッグ表示")]
     [SerializeField]
@@ -282,7 +282,7 @@ public class AbilityDragButton :
             );
 
         if (distanceFromCandidate >
-            stationaryRadius)
+            stationaryRadius * rootCanvas.scaleFactor)
         {
             BeginPlacementCandidate(
                 eventData.position
@@ -295,6 +295,12 @@ public class AbilityDragButton :
     {
         if (!isDragging)
         {
+            return;
+        }
+
+        if (!CanInteract() || !IsInsideWorldArea(eventData.position, eventData.pressEventCamera))
+        {
+            FinishDrag();
             return;
         }
 
@@ -438,8 +444,7 @@ public class AbilityDragButton :
             pointerPosition -
             lockedScreenPosition;
 
-        if (offset.magnitude <
-            directionThreshold)
+        if (offset.magnitude < directionThreshold * rootCanvas.scaleFactor)
         {
             selectedScreenDirection =
                 Vector2.zero;
@@ -454,8 +459,7 @@ public class AbilityDragButton :
             return;
         }
 
-        selectedScreenDirection =
-            GetFourDirection(offset);
+        selectedScreenDirection = offset.normalized;
 
         if (directionGuide != null)
         {
@@ -463,22 +467,6 @@ public class AbilityDragButton :
                 selectedScreenDirection
             );
         }
-    }
-
-    private Vector2 GetFourDirection(
-        Vector2 direction)
-    {
-        if (Mathf.Abs(direction.x) >
-            Mathf.Abs(direction.y))
-        {
-            return direction.x >= 0f
-                ? Vector2.right
-                : Vector2.left;
-        }
-
-        return direction.y >= 0f
-            ? Vector2.up
-            : Vector2.down;
     }
 
     private bool IsInsideWorldArea(

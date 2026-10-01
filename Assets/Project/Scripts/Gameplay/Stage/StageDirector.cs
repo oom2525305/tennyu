@@ -53,7 +53,7 @@ namespace Tenyu.Gameplay
                 return;
 
             RemainingTime =
-                Mathf.Max(0f, RemainingTime - Time.deltaTime);
+                Mathf.Max(0f, RemainingTime - StageTime.DeltaTime);
 
             TimeChanged?.Invoke(RemainingTime);
 

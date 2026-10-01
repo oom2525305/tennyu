@@ -509,7 +509,7 @@ MonoBehaviour:
   directionGuide: {fileID: 0}
   placementLockDelay: 0.15
   stationaryRadius: 18
-  directionThreshold: 55
+  directionThreshold: 35
   sourceIcon: {fileID: 157825706991609143}
   sourceCanvasGroup: {fileID: 8913768201784116207}
   dragCursorSprite: {fileID: 21300000, guid: 0253a09f43e119c418ffc73ee017241e, type: 3}

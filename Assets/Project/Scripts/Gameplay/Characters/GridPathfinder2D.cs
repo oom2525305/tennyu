@@ -138,6 +138,7 @@ namespace Tenyu.Gameplay
                         cursor = parents[cursor];
                     }
                     result.Reverse();
+                    SmoothPath(body, start, obstacleLayers, skin, result);
                     return true;
                 }
 
@@ -169,6 +170,22 @@ namespace Tenyu.Gameplay
                 }
             }
             return false;
+        }
+
+        private void SmoothPath(Rigidbody2D body, Vector2 start, LayerMask walls,
+            float skin, List<Vector2> path)
+        {
+            int read = 0, write = 0;
+            Vector2 from = start;
+            while (read < path.Count)
+            {
+                int next = path.Count - 1;
+                while (next > read && !CanTravel(body, from, path[next], walls, skin)) next--;
+                from = path[next];
+                path[write++] = from;
+                read = next + 1;
+            }
+            if (write < path.Count) path.RemoveRange(write, path.Count - write);
         }
 
         private void Relax(int current, int next, Vector2 from, Vector2 to,

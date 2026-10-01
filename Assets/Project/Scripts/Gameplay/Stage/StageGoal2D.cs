@@ -16,8 +16,12 @@ public class StageGoal2D : MonoBehaviour
         goalCollider.isTrigger = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) { TryClear(other); }
+    private void OnTriggerStay2D(Collider2D other) { TryClear(other); }
+
+    private void TryClear(Collider2D other)
     {
+        if (stageDirector == null || stageDirector.Phase != StagePhase.Playing) return;
         ProtectedTarget2D enteredTarget =
             other.GetComponentInParent<ProtectedTarget2D>();
 

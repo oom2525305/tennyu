@@ -66,6 +66,11 @@ namespace Tenyu.Gameplay
         [SerializeField, Min(0f)]
         private float warningSoundLeadTime = 2f;
 
+        [Header("神の能力")]
+        [SerializeField] private DivinePowerReceiver2D powerReceiver;
+        [SerializeField, Min(0f)] private float windDisplacement = 0.2f;
+        private Vector3 countdownOffset;
+
         private RockState state;
         private float remainingWarningTime;
         private float fallElapsed;
@@ -77,6 +82,8 @@ namespace Tenyu.Gameplay
 
         private void Awake()
         {
+            if (countdownText != null && impactPoint != null)
+                countdownOffset = countdownText.transform.parent.position - impactPoint.position;
             if (shadowVisual != null)
             {
                 shadowBaseScale =
@@ -86,6 +93,11 @@ namespace Tenyu.Gameplay
 
         private void OnEnable()
         {
+            if (powerReceiver != null)
+            {
+                powerReceiver.WindReceived += ReceiveWind;
+                powerReceiver.ThunderReceived += ReceiveThunder;
+            }
             if (stageDirector != null)
             {
                 stageDirector.StageReset += ResetRock;
@@ -147,9 +159,34 @@ namespace Tenyu.Gameplay
             }
         }
 
+        private void ReceiveThunder(float strength)
+        {
+            if (strength > 0f && stageDirector != null &&
+                stageDirector.Phase == StagePhase.Playing && state == RockState.Waiting)
+                BeginFall();
+        }
+
+        private void ReceiveWind(Vector2 direction, float impulse)
+        {
+            if (stageDirector == null || stageDirector.Phase != StagePhase.Playing ||
+                state == RockState.Finished) return;
+            targetPosition += (Vector3)(direction.normalized * impulse * windDisplacement);
+            if (state == RockState.Waiting) startPosition = targetPosition + Vector3.up * fallHeight;
+            AlignWarning();
+        }
+
+        private void AlignWarning()
+        {
+            if (powerReceiver != null) powerReceiver.transform.position = targetPosition;
+            if (warningMarker != null) warningMarker.transform.position = targetPosition;
+            if (shadowVisual != null) shadowVisual.position = targetPosition;
+            if (countdownText != null) countdownText.transform.parent.position = targetPosition + countdownOffset;
+        }
+
         private void BeginFall()
         {
             state = RockState.Falling;
+            if (countdownText != null) countdownText.gameObject.SetActive(false);
             fallElapsed = 0f;
             if (warningSound != null) warningSound.Stop();
 
@@ -220,6 +257,7 @@ namespace Tenyu.Gameplay
         private void Impact()
         {
             state = RockState.Finished;
+            if (powerReceiver != null) powerReceiver.gameObject.SetActive(false);
 
             if (rockVisual != null)
             {
@@ -293,10 +331,13 @@ namespace Tenyu.Gameplay
             }
 
             state = RockState.Waiting;
+            if (countdownText != null) countdownText.gameObject.SetActive(true);
             remainingWarningTime = warningTime;
             fallElapsed = 0f;
 
             targetPosition = impactPoint.position;
+            if (powerReceiver != null) powerReceiver.gameObject.SetActive(true);
+            AlignWarning();
 
             startPosition =
                 targetPosition +
@@ -346,6 +387,11 @@ namespace Tenyu.Gameplay
 
         private void OnDisable()
         {
+            if (powerReceiver != null)
+            {
+                powerReceiver.WindReceived -= ReceiveWind;
+                powerReceiver.ThunderReceived -= ReceiveThunder;
+            }
             StopSounds();
             if (stageDirector != null)
             {
