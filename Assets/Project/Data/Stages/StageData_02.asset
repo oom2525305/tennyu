@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: StageData_02
   m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Timeline.TimelineStageData
   stageId: 2
-  stageName: "\u6876\u72ED\u9593\u306E\u6226\u3044"
+  stageName: "\u5fcd\u3073\u5bc4\u308b\u51f6\u5203"
   year: "1560\u5E74"
-  description: "\u7E54\u7530\u4FE1\u9577\u3092\u76EE\u7684\u5730\u307E\u3067\u5C0E\u304F\u3002"
+  description: "\u98a8\u3068\u5e7d\u970a\u3067\u4fe1\u9577\u3092\u5c0e\u304d\u3001\u6a4b\u304b\u3089\u95a2\u6240\u306e\u9580\u3092\u76ee\u6307\u3059\u3002\u8107\u9053\u3078\u306e\u8a98\u5c0e\u3068\u98a8\u306e\u5411\u304d\u3092\u4f7f\u3044\u5206\u3051\u3088\u3046\u3002"
   difficulty: 2
-  stageIcon: {fileID: 0}
+  stageIcon: {fileID: 1515494656778987266, guid: 1a9a2e7fa3e60f14f8ac4e25d00fdd08, type: 3}
