@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9913b77fb2c5228478fe6f6e3a1d6bb6, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Gameplay.StageUIController
   stageDirector: {fileID: 5118225735906958598}
   timerText: {fileID: 4139785254503778453}
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4122b3d7af07b9b4ea391f7023452f32, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::DivinePowerSystem2D
   stageDirector: {fileID: 5118225735906958598}
   effectRadius: 2
@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -856,7 +856,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91ec738ed489ec04ab707042326ea6df, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Gameplay.StageDirector
   clearOnTimeout: 0
   stageDuration: 40
@@ -871,7 +871,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f4291473694fa46926c909b7f487b8, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Gameplay.StageClearProgressSaver
   stageDirector: {fileID: 5118225735906958598}
 --- !u!1 &2718261735572238983
@@ -931,7 +931,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -961,7 +961,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9af2c7cead0bcf14ab2cc47eac507627, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Gameplay.GridPathfinder2D
   areaSize: {x: 16.72, y: 9.41}
   cellSize: 0.15
@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cd7927e903c03f47a8578c21676b407, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::AbilityDirectionGuideUI
   guideRoot: {fileID: 5593540591122166638}
   arrowUp: {fileID: 2867551590465294227}
@@ -1679,7 +1679,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
@@ -1914,7 +1914,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b3b526bcbed79d41b5bf1e0443e9950, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Tenyu.SceneFlow.SceneNavigator
 --- !u!1 &4010699648992666034
 GameObject:
@@ -1974,7 +1974,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2004,7 +2004,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -2047,7 +2047,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &4167518525436205189
@@ -2153,7 +2153,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
@@ -2280,7 +2280,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2417,7 +2417,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2554,7 +2554,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2767,7 +2767,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2845,7 +2845,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2875,7 +2875,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -2964,7 +2964,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3139,7 +3139,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
@@ -3214,7 +3214,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3354,7 +3354,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3463,7 +3463,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3493,7 +3493,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -3751,7 +3751,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 556b156fa1064d74dab2aa9bc383663a, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Gameplay.AbilityRangeIndicator2D
   segments: 64
   lineWidth: 0.05
@@ -3934,7 +3934,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
@@ -4012,7 +4012,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4042,7 +4042,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -4085,7 +4085,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &6987497994622644459
@@ -4146,7 +4146,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4176,7 +4176,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -4284,7 +4284,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
@@ -4307,7 +4307,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
@@ -4369,7 +4369,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4506,7 +4506,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4647,7 +4647,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4710,7 +4710,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
@@ -4725,7 +4725,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
   m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
@@ -4801,7 +4801,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4947,7 +4947,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4977,7 +4977,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -5020,7 +5020,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8978129340104503832
@@ -5078,7 +5078,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5217,7 +5217,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5247,7 +5247,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
     m_Mode: 3
@@ -5339,7 +5339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
       propertyPath: stageDirector
-      value: 
+      value:
       objectReference: {fileID: 5118225735906958598}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5365,23 +5365,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1997799617675576307, guid: 51335b8dde720484b8240c3e1af7f16c, type: 3}
       propertyPath: powerSystem
-      value: 
+      value:
       objectReference: {fileID: 6622081547540006974}
     - target: {fileID: 5533126974283793569, guid: 51335b8dde720484b8240c3e1af7f16c, type: 3}
       propertyPath: powerSystem
-      value: 
+      value:
       objectReference: {fileID: 6622081547540006974}
     - target: {fileID: 5533126974283793569, guid: 51335b8dde720484b8240c3e1af7f16c, type: 3}
       propertyPath: worldCamera
-      value: 
+      value:
       objectReference: {fileID: 6094450027046650917}
     - target: {fileID: 5533126974283793569, guid: 51335b8dde720484b8240c3e1af7f16c, type: 3}
       propertyPath: worldCastArea
-      value: 
+      value:
       objectReference: {fileID: 400466415150930568}
     - target: {fileID: 5533126974283793569, guid: 51335b8dde720484b8240c3e1af7f16c, type: 3}
       propertyPath: rangeIndicator
-      value: 
+      value:
       objectReference: {fileID: 3626564613452222320}
     - target: {fileID: 5798462822070406289, guid: 51335b8dde720484b8240c3e1af7f16c, type: 3}
       propertyPath: m_Name
@@ -5495,11 +5495,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 707979256906856053, guid: b29ae904851995c47880f64397f137cf, type: 3}
       propertyPath: stageDirector
-      value: 
+      value:
       objectReference: {fileID: 5118225735906958598}
     - target: {fileID: 707979256906856053, guid: b29ae904851995c47880f64397f137cf, type: 3}
       propertyPath: protectedTarget
-      value: 
+      value:
       objectReference: {fileID: 5326484789955831212}
     - target: {fileID: 1504070219887393823, guid: b29ae904851995c47880f64397f137cf, type: 3}
       propertyPath: m_Name
@@ -5569,7 +5569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 166707435880359835, guid: b3fb7ab457bc21f43bb5f42360c4f81f, type: 3}
       propertyPath: stageDirector
-      value: 
+      value:
       objectReference: {fileID: 5118225735906958598}
     - target: {fileID: 890939652865411288, guid: b3fb7ab457bc21f43bb5f42360c4f81f, type: 3}
       propertyPath: m_Name
@@ -5617,7 +5617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3761224378579672625, guid: b3fb7ab457bc21f43bb5f42360c4f81f, type: 3}
       propertyPath: stageDirector
-      value: 
+      value:
       objectReference: {fileID: 5118225735906958598}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5643,7 +5643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1009672693787952217, guid: 42aff678ebcf8904596d9631453f8616, type: 3}
       propertyPath: powerSystem
-      value: 
+      value:
       objectReference: {fileID: 6622081547540006974}
     - target: {fileID: 5026801045263780667, guid: 42aff678ebcf8904596d9631453f8616, type: 3}
       propertyPath: m_Name
@@ -5651,23 +5651,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6445515794611897099, guid: 42aff678ebcf8904596d9631453f8616, type: 3}
       propertyPath: powerSystem
-      value: 
+      value:
       objectReference: {fileID: 6622081547540006974}
     - target: {fileID: 6445515794611897099, guid: 42aff678ebcf8904596d9631453f8616, type: 3}
       propertyPath: worldCamera
-      value: 
+      value:
       objectReference: {fileID: 6094450027046650917}
     - target: {fileID: 6445515794611897099, guid: 42aff678ebcf8904596d9631453f8616, type: 3}
       propertyPath: worldCastArea
-      value: 
+      value:
       objectReference: {fileID: 400466415150930568}
     - target: {fileID: 6445515794611897099, guid: 42aff678ebcf8904596d9631453f8616, type: 3}
       propertyPath: directionGuide
-      value: 
+      value:
       objectReference: {fileID: 2644206064371925103}
     - target: {fileID: 6445515794611897099, guid: 42aff678ebcf8904596d9631453f8616, type: 3}
       propertyPath: rangeIndicator
-      value: 
+      value:
       objectReference: {fileID: 3626564613452222320}
     - target: {fileID: 8710437923346731079, guid: 42aff678ebcf8904596d9631453f8616, type: 3}
       propertyPath: m_Pivot.x
@@ -5773,7 +5773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 715340938560776914, guid: 30d82d340e201404ebf0894630b51a85, type: 3}
       propertyPath: powerSystem
-      value: 
+      value:
       objectReference: {fileID: 6622081547540006974}
     - target: {fileID: 4768394836175988144, guid: 30d82d340e201404ebf0894630b51a85, type: 3}
       propertyPath: m_Name
@@ -5781,19 +5781,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6817718983275457920, guid: 30d82d340e201404ebf0894630b51a85, type: 3}
       propertyPath: powerSystem
-      value: 
+      value:
       objectReference: {fileID: 6622081547540006974}
     - target: {fileID: 6817718983275457920, guid: 30d82d340e201404ebf0894630b51a85, type: 3}
       propertyPath: worldCamera
-      value: 
+      value:
       objectReference: {fileID: 6094450027046650917}
     - target: {fileID: 6817718983275457920, guid: 30d82d340e201404ebf0894630b51a85, type: 3}
       propertyPath: worldCastArea
-      value: 
+      value:
       objectReference: {fileID: 400466415150930568}
     - target: {fileID: 6817718983275457920, guid: 30d82d340e201404ebf0894630b51a85, type: 3}
       propertyPath: rangeIndicator
-      value: 
+      value:
       objectReference: {fileID: 3626564613452222320}
     - target: {fileID: 9155752175760932556, guid: 30d82d340e201404ebf0894630b51a85, type: 3}
       propertyPath: m_Pivot.x
@@ -5915,11 +5915,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1085920508231766334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: pathfinder
-      value: 
+      value:
       objectReference: {fileID: 5631471843832230023}
     - target: {fileID: 1085920508231766334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: stageDirector
-      value: 
+      value:
       objectReference: {fileID: 5118225735906958598}
     - target: {fileID: 1085920508231766334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: waypoints.Array.size
@@ -5931,39 +5931,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1085920508231766334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: 'waypoints.Array.data[0]'
-      value: 
+      value:
       objectReference: {fileID: 3602672865853165110}
     - target: {fileID: 1085920508231766334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: 'waypoints.Array.data[1]'
-      value: 
+      value:
       objectReference: {fileID: 1676690022993873937}
     - target: {fileID: 1085920508231766334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: 'waypoints.Array.data[2]'
-      value: 
+      value:
       objectReference: {fileID: 5637810211676505622}
     - target: {fileID: 1085920508231766334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: 'waypoints.Array.data[3]'
-      value: 
+      value:
       objectReference: {fileID: 103296793874411822}
     - target: {fileID: 1085920508231766334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: 'waypoints.Array.data[4]'
-      value: 
+      value:
       objectReference: {fileID: 3426528882663552579}
     - target: {fileID: 1085920508231766334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: 'waypoints.Array.data[5]'
-      value: 
+      value:
       objectReference: {fileID: 4384857408303180194}
     - target: {fileID: 1085920508231766334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: 'waypoints.Array.data[6]'
-      value: 
+      value:
       objectReference: {fileID: 8919927559305801656}
     - target: {fileID: 1085920508231766334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: 'waypoints.Array.data[7]'
-      value: 
+      value:
       objectReference: {fileID: 9108794123129803236}
     - target: {fileID: 4070830194462107374, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: stageDirector
-      value: 
+      value:
       objectReference: {fileID: 5118225735906958598}
     - target: {fileID: 4082709641747381250, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6011,7 +6011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5188088090749750237, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: stageDirector
-      value: 
+      value:
       objectReference: {fileID: 5118225735906958598}
     - target: {fileID: 5865846920916570334, guid: b10217329cfa8674e89218853509e5cf, type: 3}
       propertyPath: influence.rain
@@ -6044,7 +6044,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ce2d0f8c95e7c847a4fa292e1f7738e, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Gameplay.ProtectedTarget2D
 --- !u!1001 &8256265302803100183
 PrefabInstance:
@@ -6060,7 +6060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3740284759429813292, guid: 8a6dc70672c3255459b0a7c04d73a9e3, type: 3}
       propertyPath: powerSystem
-      value: 
+      value:
       objectReference: {fileID: 6622081547540006974}
     - target: {fileID: 4974942639462268978, guid: 8a6dc70672c3255459b0a7c04d73a9e3, type: 3}
       propertyPath: m_Pivot.x
@@ -6144,19 +6144,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248588319254680446, guid: 8a6dc70672c3255459b0a7c04d73a9e3, type: 3}
       propertyPath: powerSystem
-      value: 
+      value:
       objectReference: {fileID: 6622081547540006974}
     - target: {fileID: 7248588319254680446, guid: 8a6dc70672c3255459b0a7c04d73a9e3, type: 3}
       propertyPath: worldCamera
-      value: 
+      value:
       objectReference: {fileID: 6094450027046650917}
     - target: {fileID: 7248588319254680446, guid: 8a6dc70672c3255459b0a7c04d73a9e3, type: 3}
       propertyPath: worldCastArea
-      value: 
+      value:
       objectReference: {fileID: 400466415150930568}
     - target: {fileID: 7248588319254680446, guid: 8a6dc70672c3255459b0a7c04d73a9e3, type: 3}
       propertyPath: rangeIndicator
-      value: 
+      value:
       objectReference: {fileID: 3626564613452222320}
     - target: {fileID: 8658718073206414158, guid: 8a6dc70672c3255459b0a7c04d73a9e3, type: 3}
       propertyPath: m_Name
@@ -6254,7 +6254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7427197253491799233, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
       propertyPath: stageDirector
-      value: 
+      value:
       objectReference: {fileID: 5118225735906958598}
     - target: {fileID: 8450960368538837742, guid: b4703700a83bc7d4d860a817c6474cc3, type: 3}
       propertyPath: m_LocalPosition.x
