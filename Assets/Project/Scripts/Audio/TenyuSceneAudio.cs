@@ -65,6 +65,8 @@ namespace Tenyu.Audio
 
         private void OnEnable()
         {
+            TenyuAudioSettings.Changed += ApplyVolumes;
+            ApplyVolumes();
             if (stageDirector != null)
             {
                 stageDirector.PhaseChanged += OnPhaseChanged;
@@ -89,7 +91,7 @@ namespace Tenyu.Audio
             if (previousPhase != StagePhase.Cleared && previousPhase != StagePhase.Failed)
                 StartMusic();
             if (previousPhase == StagePhase.Paused)
-                music.volume = bgmVolume * pausedBgmMultiplier;
+                ApplyVolumes();
         }
 
         private void SnapshotCounts()
@@ -104,7 +106,7 @@ namespace Tenyu.Audio
         {
             if (music == null) return;
             if (music.clip != bgm) music.clip = bgm;
-            music.volume = bgmVolume;
+            ApplyVolumes();
             if (bgm != null && !music.isPlaying) music.Play();
         }
 
@@ -113,7 +115,7 @@ namespace Tenyu.Audio
             StagePhase old = previousPhase;
             previousPhase = phase;
             if (!ready) return;
-            music.volume = bgmVolume;
+            ApplyVolumes();
             switch (phase)
             {
                 case StagePhase.Observation:
@@ -126,7 +128,7 @@ namespace Tenyu.Audio
                     break;
                 case StagePhase.Paused:
                     ability.Pause();
-                    music.volume = bgmVolume * pausedBgmMultiplier;
+                    ApplyVolumes();
                     break;
                 case StagePhase.Cleared:
                     music.Stop();
@@ -176,6 +178,14 @@ namespace Tenyu.Audio
                 ui.PlayOneShot(clip, seVolume);
         }
 
+        private void ApplyVolumes()
+        {
+            if (music != null) music.volume = bgmVolume * TenyuAudioSettings.Music *
+                (stageDirector != null && stageDirector.Phase == StagePhase.Paused ? pausedBgmMultiplier : 1f);
+            if (ui != null) ui.volume = TenyuAudioSettings.Effects;
+            if (ability != null) ability.volume = TenyuAudioSettings.Effects;
+        }
+
         private void StopTransientSounds()
         {
             ui.Stop();
@@ -184,6 +194,7 @@ namespace Tenyu.Audio
 
         private void OnDisable()
         {
+            TenyuAudioSettings.Changed -= ApplyVolumes;
             if (stageDirector != null)
             {
                 stageDirector.PhaseChanged -= OnPhaseChanged;

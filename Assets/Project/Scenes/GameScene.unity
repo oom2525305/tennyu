@@ -158,6 +158,9 @@ MonoBehaviour:
   - stageId: 3
     stagePrefab: {fileID: 3444728708067769216, guid: 79377a392c42477e8b94f80afe91a9c4, type: 3}
     hardStagePrefab: {fileID: 3444728708067769216, guid: 842e2b830ce545c5b05d209b01b27158, type: 3}
+  - stageId: 4
+    stagePrefab: {fileID: 3444728708067769216, guid: 5e8d2708300143b4b46cec13e6dbeb9a, type: 3}
+    hardStagePrefab: {fileID: 3444728708067769216, guid: 99f041760fb248df940f97a17e0b2f23, type: 3}
   useEditorTestStage: 0
   editorTestStageId: 1
 --- !u!4 &738214768

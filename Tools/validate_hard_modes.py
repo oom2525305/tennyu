@@ -27,7 +27,7 @@ for entry in loader['stages']:
     assert all(int(x)==0 or int(x) in ids for x in re.findall(r'\{fileID: (-?\d+)\}',base.read_text()))
     assert d[5118225735906958598]['stageDuration']==40
     power=d[6622081547540006974]
-    assert power['maxWindUses']==2
+    assert power['maxWindUses']==(3 if i==4 else 2)
     assert power['maxThunderUses']==(0 if i==2 else 1)
     assert power['maxRainUses']==(1 if i==3 else 0)
     assert power['maxGhostUses']==(2 if i==2 else 0)
@@ -51,6 +51,10 @@ for entry in loader['stages']:
         assert d[9200000000000000022].get('ambushDistance',0)==0
         walls=unary_union([Polygon([(p['x'],p['y']) for p in path]) for fid in (5751537408444854577,8849112982539888620) for path in d[fid]['m_Points']['m_Paths']])
         assert walls.distance(Point(-.46,-.115))>.42
+    if i==4:
+        for fid in (9170000000000000002,9170000000000000012):
+            assert d[fid]['collapseDelay']==1.9
+            assert d[fid]['lineMaterial']['fileID']!=0
     if i==3:
         assert not any(v.get('m_EditorClassIdentifier','').endswith('WindRoadblock2D') for v in d.values())
         assert d[9200000000000000128]['initiallyBurning']==0 # fixed fence needs lightning

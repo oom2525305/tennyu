@@ -406,6 +406,67 @@ public sealed class GameplayRegressionTests
         Assert.That(Get(rock, "state").ToString(), Is.EqualTo("Falling"));
     }
 
+    [TestCase(false)]
+    [TestCase(true)]
+    public void BridgeClockPausesAndOnlyHitsTargetsStillOnBridge(bool escape)
+    {
+        var director = Director();
+        var bridgeGo = Make("Bridge", false);
+        var bridge = bridgeGo.AddComponent(TypeOf("Tenyu.Gameplay.CollapsingBridge2D"));
+        Set(bridge, "stageDirector", director); Set(bridge, "collapseDelay", 0.1f);
+        bridgeGo.SetActive(true); Call(bridge, "ResetBridge");
+        var targetGo = Make("Nobunaga", false); targetGo.layer = 6;
+        targetGo.AddComponent<CircleCollider2D>().radius = 0.4f;
+        var target = targetGo.AddComponent(TypeOf("Tenyu.Gameplay.ProtectedTarget2D"));
+        Set(target, "stageDirector", director); targetGo.SetActive(true);
+        Physics2D.SyncTransforms(); Call(bridge, "FixedUpdate");
+        Assert.That((bool)Get(bridge, "triggered"), Is.False, "Observation must not arm a bridge");
+        Call(director, "BeginStage"); Call(bridge, "FixedUpdate");
+        Assert.That((bool)Get(bridge, "triggered"), Is.True);
+        Call(director, "PauseStage"); float remaining = (float)Get(bridge, "remaining");
+        Call(bridge, "FixedUpdate");
+        Assert.That((float)Get(bridge, "remaining"), Is.EqualTo(remaining));
+        if (escape) targetGo.transform.position = Vector3.right * 4f;
+        Physics2D.SyncTransforms(); Call(director, "ResumeStage");
+        for (int i = 0; i < 10; i++) Call(bridge, "FixedUpdate");
+        Assert.That((bool)Get(bridge, "collapsed"), Is.True);
+        Assert.That(Property(director, "Phase").ToString(), Is.EqualTo(escape ? "Playing" : "Failed"));
+        Call(director, "ResetStage");
+        Assert.That((bool)Get(bridge, "collapsed"), Is.False);
+        Assert.That((bool)Get(bridge, "triggered"), Is.False);
+        Assert.That((float)Get(bridge, "remaining"), Is.EqualTo(0.1f));
+    }
+
+    [Test] public void SoundSettingsClampAndUpdateExistingSourcesWithoutCompounding()
+    {
+        var settings = TypeOf("Tenyu.Audio.TenyuAudioSettings");
+        const string key = "Tenyu.Audio.Effects";
+        bool existed = PlayerPrefs.HasKey(key); float old = PlayerPrefs.GetFloat(key, 1);
+        var soundGo = Make("Guarded sound", false);
+        var source = soundGo.AddComponent<AudioSource>(); source.volume = 0.6f;
+        soundGo.AddComponent(TypeOf("Tenyu.Audio.TenyuStageSourceGuard"));
+        soundGo.SetActive(true);
+        try
+        {
+            settings.GetMethod("SetEffects").Invoke(null, new object[] { 0.5f });
+            Assert.That(source.volume, Is.EqualTo(0.3f).Within(0.001f));
+            settings.GetMethod("SetEffects").Invoke(null, new object[] { 0.5f });
+            Assert.That(source.volume, Is.EqualTo(0.3f).Within(0.001f));
+            settings.GetMethod("SetEffects").Invoke(null, new object[] { -1f });
+            Assert.That(source.volume, Is.Zero);
+            settings.GetMethod("SetEffects").Invoke(null, new object[] { 2f });
+            Assert.That(source.volume, Is.EqualTo(0.6f).Within(0.001f));
+            settings.GetMethod("Save").Invoke(null, null);
+            Assert.That(PlayerPrefs.GetFloat(key), Is.EqualTo(1f));
+        }
+        finally
+        {
+            settings.GetMethod("SetEffects").Invoke(null, new object[] { old });
+            if (!existed) PlayerPrefs.DeleteKey(key);
+            PlayerPrefs.Save();
+        }
+    }
+
     [Test] public void RainExtinguishesAndWetFenceCannotIgniteUntilDry()
     {
         var director = Director(); var go = Make("Fence", false);

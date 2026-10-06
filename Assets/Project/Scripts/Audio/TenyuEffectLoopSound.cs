@@ -24,10 +24,13 @@ namespace Tenyu.Audio
             source.loop = true;
             source.spatialBlend = 0f;
             source.clip = loopClip;
-            source.volume = volume;
+            ApplyVolume();
         }
+        private void ApplyVolume() { if (source != null) source.volume = volume * TenyuAudioSettings.Effects; }
         private void OnEnable()
         {
+            TenyuAudioSettings.Changed += ApplyVolume;
+            ApplyVolume();
             // Instantiateされる雨Prefabからシーン内の管理を解決する。
             if (stageDirector == null)
                 stageDirector = FindFirstObjectByType<StageDirector>();
@@ -78,6 +81,7 @@ namespace Tenyu.Audio
         }
         private void OnDisable()
         {
+            TenyuAudioSettings.Changed -= ApplyVolume;
             if (stageDirector != null)
             {
                 stageDirector.PhaseChanged -= OnPhase;

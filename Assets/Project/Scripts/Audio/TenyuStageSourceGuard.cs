@@ -13,9 +13,13 @@ namespace Tenyu.Audio
         [SerializeField] private bool stopOnResult;
         private AudioSource source;
         private bool paused;
-        private void Awake() { source = GetComponent<AudioSource>(); }
+        private float baseVolume;
+        private void Awake() { source = GetComponent<AudioSource>(); baseVolume = source.volume; }
+        private void ApplyVolume() { source.volume = baseVolume * TenyuAudioSettings.Effects; }
         private void OnEnable()
         {
+            TenyuAudioSettings.Changed += ApplyVolume;
+            ApplyVolume();
             if (stageDirector == null) stageDirector = FindFirstObjectByType<StageDirector>();
             if (stageDirector == null) return;
             stageDirector.PhaseChanged += OnPhase;
@@ -48,6 +52,7 @@ namespace Tenyu.Audio
         private void StopSound() { source.Stop(); paused = false; }
         private void OnDisable()
         {
+            TenyuAudioSettings.Changed -= ApplyVolume;
             if (stageDirector != null)
             {
                 stageDirector.PhaseChanged -= OnPhase;

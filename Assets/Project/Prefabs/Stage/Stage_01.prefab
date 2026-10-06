@@ -1855,6 +1855,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 9160000000000000000}
   - component: {fileID: 6556249161831613315}
   - component: {fileID: 8231655421882145717}
   m_Layer: 0
@@ -4132,3 +4133,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9160000000000000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7636630054767130467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ace2347d4554f8e94040acb32a531eb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.UI.TenyuSettingsUI
+  stageDirector: {fileID: 5118225735906958598}
+  sceneAudio: {fileID: 8231655421882145717}
+  font: {fileID: 11400000, guid: fe98a8100d87999458ea5120435c6840, type: 2}
+  panelSprite: {fileID: -8839236834986727442, guid: 9c11bbe0d39b5bc468d9e37101a8e229, type: 3}
+  buttonSprite: {fileID: -538391366925980363, guid: 097c61f233b1408428f7ebc01fe946f2, type: 3}

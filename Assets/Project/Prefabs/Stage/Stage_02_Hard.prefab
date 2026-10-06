@@ -6263,6 +6263,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 9160000000000000000}
   - component: {fileID: 6556249161831613315}
   - component: {fileID: 8231655421882145717}
   m_Layer: 0
@@ -7133,6 +7134,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 9160000000000000001}
   - component: {fileID: 9200000000000000017}
   - component: {fileID: 9200000000000000018}
   - component: {fileID: 9200000000000000019}
@@ -7609,6 +7611,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 9160000000000000002}
   - component: {fileID: 9200000000000000517}
   - component: {fileID: 9200000000000000518}
   - component: {fileID: 9200000000000000519}
@@ -8078,3 +8081,48 @@ MonoBehaviour:
   windDeceleration: 7
   idleColor: {r: 0.45, g: 0.7, b: 1, a: 1}
   ambushDistance: 3
+--- !u!114 &9160000000000000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7636630054767130467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ace2347d4554f8e94040acb32a531eb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.UI.TenyuSettingsUI
+  stageDirector: {fileID: 5118225735906958598}
+  sceneAudio: {fileID: 8231655421882145717}
+  font: {fileID: 11400000, guid: fe98a8100d87999458ea5120435c6840, type: 2}
+  panelSprite: {fileID: -8839236834986727442, guid: 9c11bbe0d39b5bc468d9e37101a8e229, type: 3}
+  buttonSprite: {fileID: -538391366925980363, guid: 097c61f233b1408428f7ebc01fe946f2, type: 3}
+--- !u!114 &9160000000000000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9200000000000000016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc25ccc0a614e814abd7e4a2246b9d14, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuStageSourceGuard
+  stageDirector: {fileID: 5118225735906958598}
+  stopOnResult: 1
+--- !u!114 &9160000000000000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9200000000000000516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc25ccc0a614e814abd7e4a2246b9d14, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuStageSourceGuard
+  stageDirector: {fileID: 5118225735906958598}
+  stopOnResult: 1
