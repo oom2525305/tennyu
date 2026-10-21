@@ -48,11 +48,15 @@ namespace Tenyu.Timeline
         [SerializeField]
         private Button outsideCloseButton;
 
+        [SerializeField] private Button difficultyButton;
+        [SerializeField] private TMP_Text difficultyButtonText;
+
         private TimelineStageData selectedStage;
 
         private void Awake()
         {
             RegisterButtons();
+            if (difficultyButton != null) difficultyButton.onClick.AddListener(ToggleDifficulty);
             CloseDetails();
         }
 
@@ -87,6 +91,9 @@ namespace Tenyu.Timeline
                 return;
 
             selectedStage = stageData;
+            if (difficultyButtonText != null)
+                difficultyButtonText.text = GameSession.SelectedDifficulty == StageDifficulty.Hard
+                    ? "ハード・切替" : "ノーマル・切替";
 
             if (stageNameText != null)
             {
@@ -103,14 +110,15 @@ namespace Tenyu.Timeline
             if (descriptionText != null)
             {
                 descriptionText.text =
-                    stageData.Description;
+                    GameSession.SelectedDifficulty == StageDifficulty.Hard
+                        ? stageData.HardDescription : stageData.Description;
             }
 
             if (difficultyText != null)
             {
                 difficultyText.text =
                     CreateDifficultyText(
-                        stageData.Difficulty
+                        stageData.Difficulty + (GameSession.SelectedDifficulty == StageDifficulty.Hard ? 1 : 0)
                     );
             }
 
@@ -118,7 +126,7 @@ namespace Tenyu.Timeline
             {
                 bool isCleared =
                     StageProgress.IsCleared(
-                        stageData.StageId
+                        stageData.StageId, GameSession.SelectedDifficulty
                     );
 
                 clearStatusText.text =
@@ -145,6 +153,13 @@ namespace Tenyu.Timeline
             {
                 stageDetailWindow.SetActive(true);
             }
+        }
+
+        private void ToggleDifficulty()
+        {
+            GameSession.SelectDifficulty(GameSession.SelectedDifficulty == StageDifficulty.Normal
+                ? StageDifficulty.Hard : StageDifficulty.Normal);
+            if (selectedStage != null) OpenDetails(selectedStage);
         }
 
         public void CloseDetails()
@@ -184,13 +199,13 @@ namespace Tenyu.Timeline
                 5
             );
 
-            return
-                new string('★', value) +
-                new string('☆', 5 - value);
+            // 使用中の日本語フォントに星記号がないため、数字で表示する。
+            return $"難易度 {value} / 5";
         }
 
         private void OnDestroy()
         {
+            if (difficultyButton != null) difficultyButton.onClick.RemoveListener(ToggleDifficulty);
             if (challengeButton != null)
             {
                 challengeButton.onClick.RemoveListener(

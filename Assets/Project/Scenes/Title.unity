@@ -127,6 +127,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 9160000000000000000}
   - component: {fileID: 163980166}
   - component: {fileID: 163980165}
   m_Layer: 0
@@ -224,12 +225,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -686,6 +687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleScreenController
   nextSceneName: TimelineScene
+  sceneAudio: {fileID: 163980165}
   tapGuideGroup: {fileID: 1332263671}
   pulseSpeed: 2.5
   minimumAlpha: 0.35
@@ -1145,3 +1147,20 @@ SceneRoots:
   - {fileID: 762151040}
   - {fileID: 1051648888}
   - {fileID: 163980166}
+--- !u!114 &9160000000000000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163980164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ace2347d4554f8e94040acb32a531eb, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.UI.TenyuSettingsUI
+  stageDirector: {fileID: 0}
+  sceneAudio: {fileID: 163980165}
+  font: {fileID: 11400000, guid: fe98a8100d87999458ea5120435c6840, type: 2}
+  panelSprite: {fileID: -8839236834986727442, guid: 9c11bbe0d39b5bc468d9e37101a8e229, type: 3}
+  buttonSprite: {fileID: -538391366925980363, guid: 097c61f233b1408428f7ebc01fe946f2, type: 3}

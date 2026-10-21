@@ -1,0 +1,6 @@
+{
+  "name": "Tenyu.GameplayRegressionTests",
+  "references": [],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "autoReferenced": false
+}

@@ -92,25 +92,19 @@ public class AbilityDirectionGuideUI : MonoBehaviour
 
     public void SetDirection(Vector2 direction)
     {
-        SetArrowState(
-            arrowUp,
-            direction == Vector2.up
-        );
-
-        SetArrowState(
-            arrowDown,
-            direction == Vector2.down
-        );
-
-        SetArrowState(
-            arrowLeft,
-            direction == Vector2.left
-        );
-
-        SetArrowState(
-            arrowRight,
-            direction == Vector2.right
-        );
+        bool aiming = direction.sqrMagnitude > 0.001f;
+        if (guideRoot != null)
+            guideRoot.localRotation = aiming
+                ? Quaternion.Euler(0f, 0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f)
+                : Quaternion.identity;
+        if (arrowUp != null) arrowUp.gameObject.SetActive(true);
+        if (arrowDown != null) arrowDown.gameObject.SetActive(!aiming);
+        if (arrowLeft != null) arrowLeft.gameObject.SetActive(!aiming);
+        if (arrowRight != null) arrowRight.gameObject.SetActive(!aiming);
+        SetArrowState(arrowUp, aiming);
+        SetArrowState(arrowDown, false);
+        SetArrowState(arrowLeft, false);
+        SetArrowState(arrowRight, false);
     }
 
     private void SetArrowState(

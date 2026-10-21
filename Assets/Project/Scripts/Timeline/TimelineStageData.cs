@@ -29,6 +29,10 @@ namespace Tenyu.Timeline
         [SerializeField]
         private Sprite stageIcon;
 
+        [SerializeField, TextArea(3, 6)] private string hardDescription;
+
+        public string HardDescription => string.IsNullOrEmpty(hardDescription) ? description : hardDescription;
+
         public int StageId => stageId;
         public string StageName => stageName;
         public string Year => year;

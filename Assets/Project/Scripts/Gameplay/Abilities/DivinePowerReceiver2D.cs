@@ -71,6 +71,8 @@ public class DivinePowerReceiver2D : MonoBehaviour
     [SerializeField]
     private DivinePowerStrengthEvent onGhost;
 
+    // A custom mover handles the impulse instead of Rigidbody force when subscribed.
+    public event Action<Vector2, float> WindReceived;
     public event Action<float> ThunderReceived;
     public event Action<float> RainReceived;
     public event Action<float> GhostReceived;
@@ -117,6 +119,12 @@ public class DivinePowerReceiver2D : MonoBehaviour
                 appliedImpulse
             );
 
+            return;
+        }
+
+        if (WindReceived != null)
+        {
+            WindReceived.Invoke(direction, appliedImpulse);
             return;
         }
 

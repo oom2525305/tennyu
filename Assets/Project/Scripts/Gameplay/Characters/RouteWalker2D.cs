@@ -37,6 +37,11 @@ namespace Tenyu.Gameplay
         [SerializeField] private GridPathfinder2D pathfinder;
         [SerializeField, Min(0.1f)] private float repathInterval = 0.5f;
         [SerializeField] private bool showPlannedPath = true;
+        [Tooltip("現在位置から最後の経由地点へ直接探索。風と障害物で進路が変わるステージ用。")]
+        [SerializeField] private bool navigateDirectlyToGoal;
+        [Tooltip("経路計画時だけ加える壁との余裕。実際の移動判定はObstacle Skinを使用。")]
+        [SerializeField, Min(0f)] private float pathClearance;
+        private float PathSkin => obstacleSkin + pathClearance;
 
         private readonly List<Vector2> plannedPath = new List<Vector2>();
         private int pathIndex;
@@ -56,6 +61,8 @@ namespace Tenyu.Gameplay
         [SerializeField, Min(0.1f)]
         private float maxWindSpeed = 8f;
 
+        [SerializeField] private bool advanceWaypointsWhenPushed;
+
         [SerializeField, Min(0f)]
         private float windDeceleration = 7f;
 
@@ -64,42 +71,6 @@ namespace Tenyu.Gameplay
         [SerializeField, Min(0.001f)] private float obstacleSkin = 0.02f;
 
         private readonly List<RaycastHit2D> obstacleHits = new List<RaycastHit2D>(16);
-
-        // 移動経路全体を体の形で調べる。トリガーは壁として扱わない。
-        private Vector2 ClampMovement(Vector2 desired, out bool blocked)
-        {
-            blocked = false;
-            Vector2 current = rb.position;
-            Vector2 movement = desired - current;
-            float distance = movement.magnitude;
-            if (distance <= 0.000001f || obstacleLayers.value == 0)
-                return desired;
-
-            Vector2 direction = movement / distance;
-            ContactFilter2D filter = new ContactFilter2D();
-            filter.SetLayerMask(obstacleLayers);
-            filter.useTriggers = false;
-
-            obstacleHits.Clear();
-            int count = rb.Cast(direction, filter, obstacleHits, distance + obstacleSkin);
-            float allowedDistance = distance;
-            for (int i = 0; i < count; i++)
-            {
-                RaycastHit2D hit = obstacleHits[i];
-                if (hit.collider == null)
-                    continue;
-
-                // 壁から離れる方向や壁に平行な移動は妨げない。
-                if (Vector2.Dot(direction, hit.normal) >= -0.0001f)
-                    continue;
-
-                allowedDistance = Mathf.Min(
-                    allowedDistance, Mathf.Max(0f, hit.distance - obstacleSkin));
-            }
-
-            blocked = allowedDistance < distance;
-            return current + direction * allowedDistance;
-        }
 
         [Header("失敗時")]
         [SerializeField]
@@ -120,6 +91,7 @@ namespace Tenyu.Gameplay
             Vector2.down;
 
         private Vector2 windVelocity;
+        private bool windWasActive;
 
         private float initialRigidbodyRotation;
         private Quaternion initialVisualRotation;
@@ -240,11 +212,28 @@ namespace Tenyu.Gameplay
 
             repathTimer -= dt;
             bool changed = !pathRequested || target != pathTarget ||
-                (goal - lastPathGoal).sqrMagnitude > 0.0001f;
-
-            if (changed || repathTimer <= 0f)
+                (goal - lastPathGoal).sqrMagnitude > 0.01f;
+            bool inspectRoute = repathTimer <= 0f;
+            bool blocked = false;
+            if (inspectRoute && plannedPath.Count > 0)
             {
-                pathfinder.TryFindPath(rb, goal, obstacleLayers, obstacleSkin, plannedPath);
+                Vector2 from = current;
+                for (int i = pathIndex; i < plannedPath.Count; i++)
+                {
+                    if (!pathfinder.CanTravel(rb, from, plannedPath[i], obstacleLayers, PathSkin))
+                    {
+                        blocked = true;
+                        break;
+                    }
+                    from = plannedPath[i];
+                }
+                if (!blocked) repathTimer = repathInterval;
+            }
+
+            // Validate the whole route cheaply. Rebuild only when a target/path actually changes.
+            if (changed || (inspectRoute && (plannedPath.Count == 0 || blocked)))
+            {
+                pathfinder.TryFindPath(rb, goal, obstacleLayers, PathSkin, plannedPath);
                 pathIndex = 0;
                 pathTarget = target;
                 lastPathGoal = goal;
@@ -255,24 +244,15 @@ namespace Tenyu.Gameplay
             if (plannedPath.Count == 0)
                 return current;
 
-            // 直線で到達できる先の点まで省略。角の曲がり過ぎを減らす。
-            int furthest = Mathf.Min(plannedPath.Count - 1, pathIndex + 8);
-            for (int i = furthest; i > pathIndex; i--)
-            {
-                if (pathfinder.CanTravel(rb, current, plannedPath[i],
-                    obstacleLayers, obstacleSkin))
-                {
-                    pathIndex = i;
-                    break;
-                }
-            }
-
+            // A smoothed corner can only be skipped if the next segment clears the body.
+            // Proximity alone used to cut into the corner, stop, and restart A* every interval.
             while (pathIndex < plannedPath.Count - 1 &&
-                Vector2.Distance(current, plannedPath[pathIndex]) <= 0.001f)
+                Vector2.Distance(current, plannedPath[pathIndex]) <= 0.025f &&
+                pathfinder.CanTravel(rb, current, plannedPath[pathIndex + 1], obstacleLayers, PathSkin))
                 pathIndex++;
 
             Vector2 nextPoint = plannedPath[pathIndex];
-            if (!pathfinder.CanTravel(rb, current, nextPoint, obstacleLayers, obstacleSkin))
+            if (!pathfinder.CanTravel(rb, current, nextPoint, obstacleLayers, PathSkin))
                 return current; // 道が塞がれた。次の定期再探索まで待つ。
 
             Vector2 delta = nextPoint - current;
@@ -297,36 +277,64 @@ namespace Tenyu.Gameplay
             Vector2 current = rb.position;
             Vector2 next = current;
 
-            GhostLure2D ghost = affectedByGhost && !HasFinishedRoute && !hasFallen
-                ? GhostLure2D.FindFor(stageDirector, current) : null;
+            bool windDriving = windVelocity.sqrMagnitude > 0.1225f;
+            if (!windDriving && windWasActive)
+            {
+                windVelocity = Vector2.zero;
+                ClearPath(); // Choose a route from where the player actually pushed us.
+            }
+            windWasActive = windDriving;
 
-            if (ghost != null)
+            GhostLure2D ghost = affectedByGhost && !HasFinishedRoute && !hasFallen
+                ? GhostLure2D.FindReachableFor(stageDirector, rb, pathfinder, obstacleLayers, PathSkin) : null;
+
+            // The automatic walker must not pull against the player's wind.
+            if (!windDriving && ghost != null)
             {
                 next = FollowPath(ghost.transform, ghostStoppingDistance, dt);
             }
-            else
+            else if (!windDriving)
             {
                 Transform waypoint = GetCurrentWaypoint();
                 if (waypoint != null && !HasFinishedRoute)
                 {
-                    // 実際の物理位置が到着してから経由地点を進める。
-                    if (Vector2.Distance(current, waypoint.position) <= arrivalDistance)
+                    // Consume arrived points in the same tick; no one-frame stop at each corner.
+                    while (waypoint != null && !HasFinishedRoute &&
+                        Vector2.Distance(current, waypoint.position) <= arrivalDistance)
                     {
                         AdvanceWaypoint();
                         ClearPath();
-                        if (stageDirector.Phase != StagePhase.Playing)
-                            return;
+                        if (stageDirector.Phase != StagePhase.Playing) return;
+                        waypoint = GetCurrentWaypoint();
                     }
-                    else
-                    {
+                    if (waypoint != null && !HasFinishedRoute)
                         next = FollowPath(waypoint, 0f, dt);
-                    }
                 }
             }
 
             // 風は指定方向へ押す。通常移動に戻るときに再探索する。
             next += windVelocity * dt;
-            next = ClampMovement(next, out bool blocked);
+            next = KinematicMotion2D.Resolve(rb, next - current, obstacleLayers, obstacleSkin, obstacleHits);
+            // Forward wind may cross an intermediate waypoint. Do not walk back to it.
+            if (advanceWaypointsWhenPushed && ghost == null && windVelocity.sqrMagnitude > 0.001f)
+            {
+                while (nextWaypointIndex > 0 && nextWaypointIndex < waypoints.Length - 1)
+                {
+                    Transform point = waypoints[nextWaypointIndex];
+                    Transform previous = waypoints[nextWaypointIndex - 1];
+                    if (point == null || previous == null || pathfinder == null) break;
+                    Vector2 forward = point.position - previous.position;
+                    if (Vector2.Dot(next - (Vector2)point.position, forward) < 0f ||
+                        !pathfinder.CanTravel(rb, next, point.position, obstacleLayers, obstacleSkin)) break;
+                    AdvanceWaypoint();
+                    ClearPath();
+                }
+            }
+            if ((next - current).sqrMagnitude > 0.000001f)
+            {
+                lastDirection = GetFourDirection(next - current);
+                UpdateDirectionSprite();
+            }
             rb.MovePosition(next);
             windVelocity = Vector2.MoveTowards(
                 windVelocity, Vector2.zero, windDeceleration * dt);
@@ -406,6 +414,16 @@ namespace Tenyu.Gameplay
             }
         }
 
+        // Switch a stage route without teleporting or restoring a failed character.
+        public void SetRoute(Transform[] route)
+        {
+            if (route == null || route.Length == 0) return;
+            waypoints = route;
+            nextWaypointIndex = navigateDirectlyToGoal ? route.Length - 1 : 0;
+            HasFinishedRoute = false;
+            ClearPath();
+        }
+
         public void ResetWalker()
         {
             // リトライ後は開始操作まで失敗イラストを維持する。
@@ -416,6 +434,7 @@ namespace Tenyu.Gameplay
             HasFinishedRoute = false;
             hasFallen = false;
             windVelocity = Vector2.zero;
+            windWasActive = false;
 
             // 前回プレイ時の物理速度を完全に消す
             rb.linearVelocity = Vector2.zero;
@@ -429,7 +448,7 @@ namespace Tenyu.Gameplay
                 rb.position =
                     waypoints[0].position;
 
-                nextWaypointIndex = 1;
+                nextWaypointIndex = navigateDirectlyToGoal ? waypoints.Length - 1 : 1;
             }
             else
             {
@@ -519,17 +538,16 @@ namespace Tenyu.Gameplay
         private Vector2 GetFourDirection(
             Vector2 direction)
         {
-            if (Mathf.Abs(direction.x) >
-                Mathf.Abs(direction.y))
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y) * 1.15f)
             {
                 return direction.x >= 0f
                     ? Vector2.right
                     : Vector2.left;
             }
 
-            return direction.y >= 0f
-                ? Vector2.up
-                : Vector2.down;
+            if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x) * 1.15f)
+                return direction.y >= 0f ? Vector2.up : Vector2.down;
+            return lastDirection;
         }
 
         private void OnDisable()
@@ -558,6 +576,17 @@ namespace Tenyu.Gameplay
             if (waypoints == null ||
                 waypoints.Length == 0)
             {
+                return;
+            }
+
+            if (navigateDirectlyToGoal)
+            {
+                // The old red waypoint polyline was not the route this mode actually follows.
+                Gizmos.color = Color.cyan;
+                if (waypoints[0] != null) Gizmos.DrawWireSphere(waypoints[0].position, 0.2f);
+                Gizmos.color = Color.yellow;
+                if (waypoints[waypoints.Length - 1] != null)
+                    Gizmos.DrawWireSphere(waypoints[waypoints.Length - 1].position, 0.3f);
                 return;
             }
 

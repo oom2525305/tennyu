@@ -34,6 +34,19 @@ namespace Tenyu.Audio
         private readonly Dictionary<DivinePowerType, int> counts =
             new Dictionary<DivinePowerType, int>();
 
+        // 共通UI Prefabはシーン参照を保存できないため、同じシーン内だけで解決する。
+        public static TenyuSceneAudio FindFor(Component owner)
+        {
+            foreach (TenyuSceneAudio candidate in
+                FindObjectsByType<TenyuSceneAudio>(FindObjectsSortMode.None))
+            {
+                if (candidate.gameObject.scene == owner.gameObject.scene &&
+                    candidate.isActiveAndEnabled)
+                    return candidate;
+            }
+            return null;
+        }
+
         private void Awake()
         {
             music = MakeSource(true);
@@ -52,6 +65,8 @@ namespace Tenyu.Audio
 
         private void OnEnable()
         {
+            TenyuAudioSettings.Changed += ApplyVolumes;
+            ApplyVolumes();
             if (stageDirector != null)
             {
                 stageDirector.PhaseChanged += OnPhaseChanged;
@@ -75,6 +90,8 @@ namespace Tenyu.Audio
                 ? stageDirector.Phase : StagePhase.Observation;
             if (previousPhase != StagePhase.Cleared && previousPhase != StagePhase.Failed)
                 StartMusic();
+            if (previousPhase == StagePhase.Paused)
+                ApplyVolumes();
         }
 
         private void SnapshotCounts()
@@ -88,8 +105,8 @@ namespace Tenyu.Audio
         private void StartMusic()
         {
             if (music == null) return;
-            music.clip = bgm;
-            music.volume = bgmVolume;
+            if (music.clip != bgm) music.clip = bgm;
+            ApplyVolumes();
             if (bgm != null && !music.isPlaying) music.Play();
         }
 
@@ -98,7 +115,7 @@ namespace Tenyu.Audio
             StagePhase old = previousPhase;
             previousPhase = phase;
             if (!ready) return;
-            music.volume = bgmVolume;
+            ApplyVolumes();
             switch (phase)
             {
                 case StagePhase.Observation:
@@ -111,17 +128,19 @@ namespace Tenyu.Audio
                     break;
                 case StagePhase.Paused:
                     ability.Pause();
-                    music.volume = bgmVolume * pausedBgmMultiplier;
+                    ApplyVolumes();
                     break;
                 case StagePhase.Cleared:
                     music.Stop();
                     ability.Stop();
+                    ui.Stop();
                     PlayUI(clearSound);
                     break;
                 case StagePhase.Failed:
                     music.Stop();
                     // 雷・着地など失敗原因となった短い音は最後まで鳴らす。
                     ability.UnPause();
+                    ui.Stop();
                     PlayUI(failSound);
                     break;
             }
@@ -159,6 +178,14 @@ namespace Tenyu.Audio
                 ui.PlayOneShot(clip, seVolume);
         }
 
+        private void ApplyVolumes()
+        {
+            if (music != null) music.volume = bgmVolume * TenyuAudioSettings.Music *
+                (stageDirector != null && stageDirector.Phase == StagePhase.Paused ? pausedBgmMultiplier : 1f);
+            if (ui != null) ui.volume = TenyuAudioSettings.Effects;
+            if (ability != null) ability.volume = TenyuAudioSettings.Effects;
+        }
+
         private void StopTransientSounds()
         {
             ui.Stop();
@@ -167,6 +194,7 @@ namespace Tenyu.Audio
 
         private void OnDisable()
         {
+            TenyuAudioSettings.Changed -= ApplyVolumes;
             if (stageDirector != null)
             {
                 stageDirector.PhaseChanged -= OnPhaseChanged;

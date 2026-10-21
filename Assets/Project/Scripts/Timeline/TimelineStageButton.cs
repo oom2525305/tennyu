@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Tenyu.SceneFlow;
 
 namespace Tenyu.Timeline
 {
@@ -69,7 +70,8 @@ namespace Tenyu.Timeline
                 StageProgress.IsUnlocked(stageData.StageId);
 
             bool isCleared =
-                StageProgress.IsCleared(stageData.StageId);
+                StageProgress.IsCleared(stageData.StageId) ||
+                StageProgress.IsCleared(stageData.StageId, StageDifficulty.Hard);
 
             if (stageNameText != null)
                 stageNameText.text = stageData.StageName;

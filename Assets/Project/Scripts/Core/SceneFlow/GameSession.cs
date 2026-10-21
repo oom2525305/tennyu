@@ -1,5 +1,7 @@
 namespace Tenyu.SceneFlow
 {
+    public enum StageDifficulty { Normal, Hard }
+
     public static class GameSession
     {
         public static int SelectedStageId
@@ -7,6 +9,13 @@ namespace Tenyu.SceneFlow
             get;
             private set;
         } = 1;
+
+        public static StageDifficulty SelectedDifficulty { get; private set; }
+
+        public static void SelectDifficulty(StageDifficulty difficulty)
+        {
+            SelectedDifficulty = difficulty;
+        }
 
         public static void SelectStage(int stageId)
         {
@@ -17,6 +26,7 @@ namespace Tenyu.SceneFlow
         public static void Reset()
         {
             SelectedStageId = 1;
+            SelectedDifficulty = StageDifficulty.Normal;
         }
     }
 }

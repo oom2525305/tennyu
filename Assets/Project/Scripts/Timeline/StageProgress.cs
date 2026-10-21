@@ -1,4 +1,5 @@
 using UnityEngine;
+using Tenyu.SceneFlow;
 
 namespace Tenyu.Timeline
 {
@@ -17,39 +18,39 @@ namespace Tenyu.Timeline
             if (stageId == 1)
                 return true;
 
-            return IsCleared(stageId - 1);
+            return IsCleared(stageId - 1) || IsCleared(stageId - 1, StageDifficulty.Hard);
         }
 
-        public static bool IsCleared(int stageId)
+        public static bool IsCleared(int stageId, StageDifficulty difficulty = StageDifficulty.Normal)
         {
             return PlayerPrefs.GetInt(
-                GetClearKey(stageId),
+                GetClearKey(stageId, difficulty),
                 0
             ) == 1;
         }
 
-        public static void SetCleared(int stageId)
+        public static void SetCleared(int stageId, StageDifficulty difficulty = StageDifficulty.Normal)
         {
             PlayerPrefs.SetInt(
-                GetClearKey(stageId),
+                GetClearKey(stageId, difficulty),
                 1
             );
 
             PlayerPrefs.Save();
         }
 
-        public static void ResetCleared(int stageId)
+        public static void ResetCleared(int stageId, StageDifficulty difficulty = StageDifficulty.Normal)
         {
             PlayerPrefs.DeleteKey(
-                GetClearKey(stageId)
+                GetClearKey(stageId, difficulty)
             );
 
             PlayerPrefs.Save();
         }
 
-        private static string GetClearKey(int stageId)
+        private static string GetClearKey(int stageId, StageDifficulty difficulty)
         {
-            return ClearKeyPrefix + stageId;
+            return ClearKeyPrefix + stageId + (difficulty == StageDifficulty.Hard ? "_Hard" : "");
         }
     }
 }

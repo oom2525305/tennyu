@@ -4846,6 +4846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2426454399483769166}
   - component: {fileID: 8163478910875824046}
+  - component: {fileID: 9100000000000000000}
   m_Layer: 0
   m_Name: RainEffect
   m_TagString: Untagged
@@ -4882,3 +4883,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Gameplay.TimedEffect2D
   lifetime: 2
+--- !u!114 &9100000000000000000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634253481033581039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844e14ec66460424db437542bdcf4811, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::Tenyu.Audio.TenyuEffectLoopSound
+  stageDirector: {fileID: 0}
+  loopClip: {fileID: 0}
+  volume: 0.3
+  watchedParticles: {fileID: 2877035825952380616}
+  watchedRenderer: {fileID: 5199059234338577119}
